@@ -1,29 +1,24 @@
-name: Generate and Deploy Experiment Timeline
+name: Build & Publish Experiment Timeline (gh-pages)
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read   # required by deploy-pages@v4
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write  # needed to push to gh-pages
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -34,29 +29,20 @@ jobs:
 
       - name: Generate timeline visualizations
         run: |
+          # If your script writes output into a subfolder (e.g. ./site),
+          # make sure to set publish_dir to that same folder below.
           python scripts/generate_timeline.py
 
-      - name: Setup Pages (auto-enable if needed)
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      - name: Avoid Jekyll processing (optional)
+        run: touch .nojekyll
 
-      - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v4
+      # Publish repo root to gh-pages (adjust publish_dir if needed)
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: .   # or ./site if your script writes there
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-      actions: read
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          # If your script writes to ./site instead, use:
+          # publish_dir: ./site
+          # Optional: keep a custom domain
+          # cname: example.org
