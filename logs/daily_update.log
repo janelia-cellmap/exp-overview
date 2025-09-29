@@ -385,3 +385,200 @@ Files: output/visualizations/index.html, experiment_timeline.html, experiment_ga
    Open viz: open output/visualizations/index.html
 [2025-09-29 18:26:45] run.sh completed successfully
 [2025-09-29 18:26:45] Adding changes to git...
+[2025-09-29 18:26:45] Committing changes...
+[2025-09-29 18:26:45] Pushing to repository...
+To https://github.com/janelia-cellmap/exp-overview.git
+   684d410..e37a253  main -> main
+[2025-09-29 18:26:45] Successfully pushed changes to repository
+[2025-09-29 18:26:45] Daily update process completed successfully
+[2025-09-29 18:27:42] Starting daily update process...
+[2025-09-29 18:27:42] Activated conda environment: fly
+[2025-09-29 18:27:42] Running run.sh...
+🔬 Experiment Overview Generator
+===============================
+📦 Activating conda environment...
+📂 Working directory: /groups/cellmap/cellmap/zouinkhim/exp-overview
+🔍 Checking directory structure...
+📊 Generating experiment overview...
+Generating data/processed/auto_generated_overview.csv by scanning experiment directories...
+Scanning exp_cell...
+Skipping setup_34 - no checkpoints found and not running
+Scanning exp_cerebellum...
+Scanning exp_pancreas...
+Scanning exp_c-elegen...
+Skipping 20250725_cell_all_distance_64nm - no checkpoints found and not running
+Skipping 20250725_cell_all_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_cell_all_lsd_64nm - no checkpoints found and not running
+Skipping 20250725_cell_all_mixed_distance_64nm - no checkpoints found and not running
+Skipping 20250725_cell_all_mixed_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_cell_all_mixed_lsd_64nm - no checkpoints found and not running
+Skipping 20250725_ecs_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_ecs_all_mixed_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_er_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_er_all_mixed_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_isg_all_distance_16nm - no checkpoints found and not running
+Skipping 20250725_isg_all_distance_32nm - no checkpoints found and not running
+Skipping 20250725_isg_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_isg_all_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_isg_all_mixed_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_ld_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_ld_all_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_ld_all_mixed_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_ld_all_mixed_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_lyso_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_lyso_all_mixed_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_mito_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_mito_all_mixed_lsd_16nm - no checkpoints found and not running
+Skipping 20250725_nuc_all_distance_64nm - no checkpoints found and not running
+Skipping 20250725_nuc_all_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_nuc_all_lsd_64nm - no checkpoints found and not running
+Skipping 20250725_nuc_all_mixed_distance_64nm - no checkpoints found and not running
+Skipping 20250725_nuc_all_mixed_lsd_32nm - no checkpoints found and not running
+Skipping 20250725_nuc_all_mixed_lsd_64nm - no checkpoints found and not running
+Skipping 20250806_cell_mouse_distance_32nm - low max iterations (6000) and not running
+Skipping 20250806_cell_mouse_distance_64nm - low max iterations (4000) and not running
+Skipping 20250806_cell_mouse_lsd_32nm - no checkpoints found and not running
+Skipping 20250806_cell_mouse_lsd_64nm - no checkpoints found and not running
+Skipping 20250806_ecs_mouse_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_er_mouse_distance_16nm - low max iterations (6000) and not running
+Skipping 20250806_er_mouse_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_isg_mouse_distance_16nm - low max iterations (6000) and not running
+Skipping 20250806_isg_mouse_distance_32nm - low max iterations (6000) and not running
+Skipping 20250806_isg_mouse_lsd_16nm - low max iterations (4000) and not running
+Skipping 20250806_isg_mouse_lsd_32nm - no checkpoints found and not running
+Skipping 20250806_ld_mouse_distance_16nm - low max iterations (6000) and not running
+Skipping 20250806_ld_mouse_lsd_16nm - low max iterations (6000) and not running
+Skipping 20250806_ld_mouse_lsd_32nm - low max iterations (6000) and not running
+Skipping 20250806_lyso_mouse_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_mito_mouse_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_nuc_mouse_lsd_32nm - no checkpoints found and not running
+Skipping 20250806_nuc_mouse_lsd_64nm - no checkpoints found and not running
+Skipping 20250806_perox_all_distance_16nm - low max iterations (6000) and not running
+Skipping 20250806_perox_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_perox_all_mixed_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_yolk_all_distance_16nm - low max iterations (6000) and not running
+Skipping 20250806_yolk_all_distance_32nm - low max iterations (2000) and not running
+Skipping 20250806_yolk_all_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_yolk_all_lsd_32nm - no checkpoints found and not running
+Skipping 20250806_yolk_all_mixed_distance_16nm - no checkpoints found and not running
+Skipping 20250806_yolk_all_mixed_distance_32nm - no checkpoints found and not running
+Skipping 20250806_yolk_all_mixed_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_yolk_all_mixed_lsd_32nm - no checkpoints found and not running
+Skipping 20250806_yolk_mouse_distance_16nm - no checkpoints found and not running
+Skipping 20250806_yolk_mouse_distance_32nm - no checkpoints found and not running
+Skipping 20250806_yolk_mouse_lsd_16nm - no checkpoints found and not running
+Skipping 20250806_yolk_mouse_lsd_32nm - no checkpoints found and not running
+Scanning ex_mito...
+Skipping 20250914_all_mitos - appears to be a data config file, not a training experiment
+Scanning exp_salivary...
+Generated 61 experiment entries in data/processed/auto_generated_overview.csv
+
+Comparing with original overview.csv...
+
+Comparison Results:
+Original CSV (data/raw/overview.csv): 41 experiments
+Generated CSV (data/processed/auto_generated_overview.csv): 61 experiments
+
+Setup Comparison:
+Matched setups: 38
+Only in original: 3
+Only in generated: 23
+
+Setups only in original CSV:
+  - [+80 more organelle runs]
+  - setup_34
+  - train_fly_model
+
+Setups only in generated CSV:
+  - 20250725_cell_all_distance_32nm
+  - 20250725_cell_all_mixed_distance_32nm
+  - 20250725_ecs_all_distance_16nm
+  - 20250725_ecs_all_mixed_distance_16nm
+  - 20250725_er_all_distance_16nm
+  - 20250725_er_all_mixed_distance_16nm
+  - 20250725_isg_all_mixed_distance_16nm
+  - 20250725_isg_all_mixed_distance_32nm
+  - 20250725_isg_all_mixed_lsd_16nm
+  - 20250725_ld_all_distance_16nm
+  - 20250725_ld_all_distance_32nm
+  - 20250725_ld_all_mixed_distance_16nm
+  - 20250725_ld_all_mixed_distance_32nm
+  - 20250725_lyso_all_distance_16nm
+  - 20250725_lyso_all_mixed_distance_16nm
+  - 20250725_nuc_all_distance_32nm
+  - 20250806_ecs_mouse_distance_16nm
+  - 20250806_ld_mouse_distance_32nm
+  - 20250806_lyso_mouse_distance_16nm
+  - 20250806_nuc_mouse_distance_64nm
+  - 20250806_perox_all_mixed_distance_16nm
+  - 20250806_perox_mouse_distance_16nm
+  - 20250806_perox_mouse_lsd_16nm
+
+Detailed comparison of matched setups:
+Found differences in 38 matched setups:
+  20250725_mito_all_distance_16nm:
+    Starting Checkpoint: 'from scratch' vs 'run08/438000k'
+    Max Iterations: '80000+' vs '590000'
+    Resolution (nm): '16' vs 'nan'
+  20250725_mito_all_mixed_distance_16nm:
+    Target: 'mito' vs 'er+isg+ld+lyso+mito+nuc'
+    Starting Checkpoint: 'from scratch' vs 'run08/438000k'
+    Max Iterations: '80000' vs '568000'
+  20250725_nuc_all_mixed_distance_32nm:
+    Target: 'nucleus' vs 'nuc'
+    Starting Checkpoint: 'from scratch' vs 'run08/438000k'
+    Max Iterations: '80000+' vs '582000'
+  20250806_mito_mouse_distance_16nm:
+    Starting Checkpoint: 'from scratch' vs 'run08/438000k'
+    Max Iterations: '568000+' vs '362000'
+    Resolution (nm): '16' vs 'nan'
+  20250806_nuc_mouse_distance_32nm:
+    Target: 'nucleus' vs 'nuc'
+    Starting Checkpoint: 'from scratch' vs 'run08/438000k'
+    Max Iterations: '342000+' vs '342000'
+  setup_0:
+    Starting Checkpoint: '20250725_mito_all_mixed_distance_16nm/568k' vs '20250725_mito_all_mixed_distance_16nm/568000k'
+    Resolution (nm): '16' vs '16.0'
+    Learning Rate: '5.0e-06' vs '5e-06'
+  setup_07:
+    Starting Checkpoint: '20250806_mito_mouse_distance_16nm/362k' vs '20250806_mito_mouse_distance_16nm/362000k'
+    Resolution (nm): '16' vs '16.0'
+    Learning Rate: '5.0e-06' vs '5e-06'
+  setup_08:
+    Starting Checkpoint: '20250725_mito_all_mixed_distance_16nm/568k' vs '20250725_mito_all_mixed_distance_16nm/568000k'
+    Resolution (nm): '16' vs '16.0'
+    Learning Rate: '5.0e-06' vs '5e-06'
+  setup_09:
+    Starting Checkpoint: '20250806_nuc_mouse_distance_32nm/342k' vs '20250806_nuc_mouse_distance_32nm/342000k'
+    Resolution (nm): '16' vs '32.0'
+    Learning Rate: '5.0e-06' vs '5e-06'
+  setup_1:
+    Starting Checkpoint: '20250725_mito_all_mixed_distance_16nm/80k' vs '20250725_mito_all_mixed_distance_16nm/80000k'
+    Resolution (nm): '16' vs '16.0'
+    Learning Rate: '5.0e-06' vs '5e-06'
+    ... and 28 more setups with differences
+📈 Generating timeline visualization...
+🚀 Generating experiment timeline visualizations...
+✅ Main page saved as 'output/visualizations/index.html'
+✅ Timeline saved as 'output/visualizations/experiment_timeline.html'
+✅ Gantt chart saved as 'output/visualizations/experiment_gantt.html'
+✅ Statistics saved as 'output/visualizations/experiment_stats.html'
+
+📈 All visualizations generated successfully!
+🌐 Website ready for GitHub Pages deployment!
+Files: output/visualizations/index.html, experiment_timeline.html, experiment_gantt.html, experiment_stats.html
+✅ Timeline generated: output/visualizations/
+
+🎉 Experiment overview generation complete!
+
+📋 Generated files:
+   📊 data/processed/auto_generated_overview.csv - Main experiment overview
+   📝 output/reports/comparison_report.md - Data accuracy report
+   📈 output/visualizations/ - HTML visualizations
+
+🔗 Quick access:
+   View data: cat data/processed/auto_generated_overview.csv
+   View report: cat output/reports/comparison_report.md
+   Open viz: open output/visualizations/index.html
+[2025-09-29 18:27:42] run.sh completed successfully
+[2025-09-29 18:27:42] Adding changes to git...

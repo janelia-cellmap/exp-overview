@@ -11,7 +11,7 @@ TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 cd /groups/cellmap/cellmap/zouinkhim/exp-overview
 
 # Activate conda environment
-source ~/miniforge3/etc/profile.d/conda.sh
+# source ~/miniforge3/etc/profile.d/conda.sh
 conda activate fly
 
 # Log the start of the process
