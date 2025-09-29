@@ -450,6 +450,22 @@ def create_main_page():
             margin-bottom: 3rem;
         }}
         
+        .logos {{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }}
+        
+        .logo {{
+            height: 80px;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }}
+        
         .header h1 {{
             font-size: 3rem;
             margin-bottom: 1rem;
@@ -558,6 +574,10 @@ def create_main_page():
 <body>
     <div class="container">
         <div class="header">
+            <div class="logos">
+                <img src="imgs/CellMapLogo.png" alt="CellMap Logo" class="logo">
+                <img src="imgs/HHMI_Janelia_Logo_Color.png" alt="HHMI Janelia Logo" class="logo">
+            </div>
             <h1>🧪 Experiment Timeline Dashboard</h1>
             <p>Machine Learning Model Training Experiments Across Biological Groups</p>
         </div>
