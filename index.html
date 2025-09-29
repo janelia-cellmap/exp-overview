@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment Timeline Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .visualizations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .viz-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .viz-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .viz-card h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .viz-card p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .github-link {
+            color: white;
+            text-decoration: none;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        
+        .github-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 Experiment Timeline Dashboard</h1>
+            <p>Machine Learning Model Training Experiments Across Biological Groups</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">27</span>
+                <span class="stat-label">Total Experiments</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">11</span>
+                <span class="stat-label">Currently Running</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">16</span>
+                <span class="stat-label">Completed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Experiment Groups</span>
+            </div>
+        </div>
+        
+        <div class="visualizations">
+            <div class="viz-card">
+                <h2>📅 Interactive Timeline</h2>
+                <p>Explore the chronological progression of all experiments with detailed hover information and group-based color coding.</p>
+                <a href="experiment_timeline.html" class="btn">View Timeline</a>
+            </div>
+            
+            <div class="viz-card">
+                <h2>📊 Gantt Chart</h2>
+                <p>Visualize experiment durations and overlaps in a comprehensive Gantt chart format.</p>
+                <a href="experiment_gantt.html" class="btn">View Gantt Chart</a>
+            </div>
+            
+            <div class="viz-card">
+                <h2>📈 Statistics Dashboard</h2>
+                <p>Comprehensive statistics and breakdowns by experiment group, model type, and targets.</p>
+                <a href="experiment_stats.html" class="btn">View Statistics</a>
+            </div>
+            
+            <div class="viz-card">
+                <h2>📋 Raw Data</h2>
+                <p>Access the complete experiment data in CSV format for further analysis.</p>
+                <a href="overview.csv" class="btn">Download CSV</a>
+            </div>
+            
+            <div class="viz-card">
+                <h2>📖 Documentation</h2>
+                <p>Detailed documentation about all experiments, configurations, and model architectures.</p>
+                <a href="README.md" class="btn">Read Documentation</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Last updated: 2025-09-29 18:26 UTC</p>
+            <a href="https://github.com/mzouink/guided_net" class="github-link">
+                🔗 View on GitHub
+            </a>
+        </div>
+    </div>
+</body>
+</html>
