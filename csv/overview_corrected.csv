@@ -21,7 +21,7 @@ exp_cerebellum,setup_11,nuc,fly model,20250725_nuc_all_mixed_distance_32nm/80k,4
 exp_pancreas,setup_12,isg+ld+lyso+mito,fly model,20250711_isg_ld_all_1/244k,420000,16,14.0,5.0e-06,2025-09-03,NO
 exp_pancreas,setup_13,isg,fly model,20250711_isg_ld_all_1/244k,430000,16,14.0,5.0e-06,2025-09-03,NO
 exp_pancreas,setup_14,isg+ld+lyso,fly model,20250711_isg_ld_all_1/244k,420000,16,14.0,5.0e-06,2025-09-03,NO
-exp_mito,setup_15,mito,fly model,20250806_mito_mouse_distance_16nm/362k,410000,16,14.0,5.0e-05,2025-09-14,YES
+exp_mito,setup_15,mito,fly model,20250806_mito_mouse_distance_16nm/362k,410000,16,14.0,5.0e-05,2025-08-06,YES
 exp_mito,setup_16,mito,fly model,setup_15/80k,330000,16,14.0,5.0e-05,2025-09-14,YES
 exp_mito,setup_17,mito,fly model,setup_16/30k,270000,16,14.0,5.0e-05,2025-09-14,YES
 exp_mito,setup_18,mito,fly model,20250725_mito_all_mixed_distance_16nm/372k,210000,16,14.0,5.0e-05,2025-09-14,YES
