@@ -45,7 +45,7 @@ def create_timeline_graph():
     """Create interactive timeline visualization"""
 
     # Read CSV data
-    df = pd.read_csv("overview.csv")
+    df = pd.read_csv("data/processed/auto_generated_overview.csv")
 
     # Parse dates
     df = parse_dates(df)
@@ -107,9 +107,29 @@ def create_timeline_graph():
                 + "Target: %{customdata[0]}<br>"
                 + "Model: %{customdata[1]}<br>"
                 + "Status: %{customdata[2]}<br>"
-                + "Date: %{x}<br>"
+                + "LSD: %{customdata[3]}<br>"
+                + "Resolution: %{customdata[4]}nm<br>"
+                + "Max Iterations: %{customdata[5]}<br>"
+                + "Batch Size: %{customdata[6]}<br>"
+                + "Learning Rate: %{customdata[7]}<br>"
+                + "Creation Date: %{x}<br>"
+                + "Trained Until: %{customdata[8]}<br>"
+                + "Starting Checkpoint: %{customdata[9]}<br>"
                 + "<extra></extra>",
-                customdata=group_data[["Target", "Model Type", "Status"]].values,
+                customdata=group_data[
+                    [
+                        "Target",
+                        "Model Type",
+                        "Status",
+                        "LSD",
+                        "Resolution (nm)",
+                        "Max Iterations",
+                        "Batch Size",
+                        "Learning Rate",
+                        "Trained Until",
+                        "Starting Checkpoint",
+                    ]
+                ].values,
             )
         )
 
@@ -148,24 +168,42 @@ def create_timeline_graph():
 
 
 def create_gantt_chart():
-    """Create a Gantt-style chart showing experiment duration"""
+    """Create a Gantt-style chart showing experiment duration using real training dates"""
 
-    df = pd.read_csv("overview.csv")
+    df = pd.read_csv("data/processed/auto_generated_overview.csv")
     df = parse_dates(df)
 
-    # Estimate end dates for completed experiments (assume 30-90 days duration)
-    # For running experiments, use current date
+    # Parse both creation and trained until dates
+    df["Creation Date Parsed"] = pd.to_datetime(df["Creation Date"], errors="coerce")
+    df["Trained Until Date"] = pd.to_datetime(df["Trained Until"], errors="coerce")
+
+    # For experiments without trained until date, estimate based on status
     current_date = datetime(2025, 9, 29)
 
-    df["Start"] = df["Date"]
+    # Use Creation Date as start and Trained Until as end
+    df["Start"] = df["Creation Date Parsed"]
     df["End"] = df.apply(
         lambda row: (
-            current_date
-            if row["Still Running"] == "YES"
-            else row["Date"] + timedelta(days=60)
+            # If we have a real training end date, use it
+            row["Trained Until Date"]
+            if pd.notna(row["Trained Until Date"])
+            # If still running and no end date, use current date
+            else (
+                current_date
+                if row["Still Running"] == "YES"
+                # If completed but no end date, estimate 45 days from start
+                else (
+                    row["Creation Date Parsed"] + timedelta(days=45)
+                    if pd.notna(row["Creation Date Parsed"])
+                    else current_date
+                )
+            )
         ),
         axis=1,
     )
+
+    # Calculate duration in days for display
+    df["Duration Days"] = (df["End"] - df["Start"]).dt.days
 
     # Create Gantt chart
     fig = go.Figure()
@@ -182,34 +220,106 @@ def create_gantt_chart():
 
     y_pos = 0
     for _, row in df.iterrows():
+        # Determine if dates are real or estimated
+        has_real_end = pd.notna(row["Trained Until Date"])
+        is_running = row["Still Running"] == "YES"
+
+        if has_real_end:
+            date_type = "Real Training Period"
+            line_style = "solid"
+        elif is_running:
+            date_type = "Currently Running"
+            line_style = "dash"
+        else:
+            date_type = "Estimated Duration"
+            line_style = "dot"
+
+        # Create hover text with detailed information
+        duration_text = (
+            f"{row['Duration Days']} days" if row["Duration Days"] >= 0 else "N/A"
+        )
+        creation_date_str = (
+            row["Creation Date Parsed"].strftime("%Y-%m-%d")
+            if pd.notna(row["Creation Date Parsed"])
+            else "Unknown"
+        )
+        end_date_str = (
+            row["End"].strftime("%Y-%m-%d") if pd.notna(row["End"]) else "Unknown"
+        )
+        trained_until_str = (
+            row["Trained Until"] if pd.notna(row["Trained Until Date"]) else "N/A"
+        )
+        max_iter_str = f"{row.get('Max Iterations', 'N/A')}"
+        batch_size_str = f"{row.get('Batch Size', 'N/A')}"
+        learning_rate_str = f"{row.get('Learning Rate', 'N/A')}"
+        checkpoint_str = f"{row.get('Starting Checkpoint', 'N/A')}"
+
         fig.add_trace(
             go.Scatter(
                 x=[row["Start"], row["End"]],
                 y=[y_pos, y_pos],
                 mode="lines+markers",
-                line=dict(width=8, color=group_colors.get(row["Group"], "#95A5A6")),
+                line=dict(
+                    width=8,
+                    color=group_colors.get(row["Group"], "#95A5A6"),
+                    dash=line_style,
+                ),
                 marker=dict(size=8),
                 name=f"{row['Setup']} ({row['Group'].replace('exp_', '')})",
                 hovertemplate=f"<b>{row['Setup']}</b><br>"
                 + f"Group: {row['Group']}<br>"
                 + f"Target: {row['Target']}<br>"
+                + f"Model Type: {row.get('Model Type', 'N/A')}<br>"
                 + f"Status: {row['Still Running']}<br>"
-                + "Start: %{x[0]}<br>"
-                + "End: %{x[1]}<br>"
+                + f"Duration Type: {date_type}<br>"
+                + f"Duration: {duration_text}<br>"
+                + f"Started: {creation_date_str}<br>"
+                + f"Trained Until: {trained_until_str}<br>"
+                + f"Ended/Current: {end_date_str}<br>"
+                + f"Max Iterations: {max_iter_str}<br>"
+                + f"Resolution: {row.get('Resolution (nm)', 'N/A')}nm<br>"
+                + f"Batch Size: {batch_size_str}<br>"
+                + f"Learning Rate: {learning_rate_str}<br>"
+                + f"Starting Checkpoint: {checkpoint_str}<br>"
+                + f"LSD: {row['LSD']}<br>"
                 + "<extra></extra>",
                 showlegend=False,
             )
         )
         y_pos += 1
 
-    # Update layout
+    # Update layout with enhanced information
     fig.update_layout(
-        title="🗓️ Experiment Duration Timeline (Gantt Chart)",
-        xaxis_title="Timeline",
+        title="🗓️ Experiment Duration Timeline (Gantt Chart)<br><sub>Training Periods from Creation Date to Trained Until Date | Solid: Real dates | Dashed: Ongoing | Dotted: Estimated</sub>",
+        xaxis_title="Timeline (Creation Date → Trained Until)",
         yaxis_title="Experiments",
         height=max(600, len(df) * 25),
         yaxis=dict(tickvals=list(range(len(df))), ticktext=df["Setup"].tolist()),
         template="plotly_white",
+    )
+
+    # Add annotation explaining line types and statistics
+    real_dates = len(df[df["Trained Until Date"].notna()])
+    running_count = len(df[df["Still Running"] == "YES"])
+    estimated_count = len(df) - real_dates - running_count
+
+    stats_text = f"📊 Data Quality:<br>"
+    stats_text += f"━ {real_dates} with real training periods<br>"
+    stats_text += f"┅ {running_count} currently running<br>"
+    stats_text += f"⋯ {estimated_count} estimated durations"
+
+    fig.add_annotation(
+        x=0.02,
+        y=0.98,
+        xref="paper",
+        yref="paper",
+        text=stats_text,
+        showarrow=False,
+        font=dict(size=11),
+        bgcolor="rgba(255,255,255,0.9)",
+        bordercolor="gray",
+        borderwidth=1,
+        align="left",
     )
 
     return fig
@@ -218,20 +328,26 @@ def create_gantt_chart():
 def create_summary_stats():
     """Create summary statistics visualization"""
 
-    df = pd.read_csv("overview.csv")
+    df = pd.read_csv("data/processed/auto_generated_overview.csv")
     df = parse_dates(df)
 
-    # Create subplots
+    # Create subplots with additional LSD information
     fig = make_subplots(
-        rows=2,
+        rows=3,
         cols=2,
         subplot_titles=(
             "Experiments by Group",
             "Running vs Completed",
             "Model Types",
             "Target Distribution",
+            "LSD Usage",
+            "Resolution Distribution",
         ),
-        specs=[[{"type": "bar"}, {"type": "pie"}], [{"type": "bar"}, {"type": "pie"}]],
+        specs=[
+            [{"type": "bar"}, {"type": "pie"}],
+            [{"type": "bar"}, {"type": "pie"}],
+            [{"type": "pie"}, {"type": "bar"}],
+        ],
     )
 
     # 1. Experiments by group
@@ -256,16 +372,34 @@ def create_summary_stats():
         go.Bar(x=model_counts.index, y=model_counts.values, name="Models"), row=2, col=1
     )
 
-    # 4. Target distribution
-    target_counts = df["Target"].value_counts()
+    # 4. Target distribution (top 10 only)
+    target_counts = df["Target"].value_counts().head(10)
     fig.add_trace(
         go.Pie(labels=target_counts.index, values=target_counts.values, name="Targets"),
         row=2,
         col=2,
     )
 
+    # 5. LSD Usage
+    lsd_counts = df["LSD"].value_counts()
+    fig.add_trace(
+        go.Pie(labels=lsd_counts.index, values=lsd_counts.values, name="LSD"),
+        row=3,
+        col=1,
+    )
+
+    # 6. Resolution distribution
+    resolution_counts = df["Resolution (nm)"].dropna().value_counts().sort_index()
+    fig.add_trace(
+        go.Bar(
+            x=resolution_counts.index, y=resolution_counts.values, name="Resolution"
+        ),
+        row=3,
+        col=2,
+    )
+
     fig.update_layout(
-        height=800, title_text="📊 Experiment Overview Statistics", showlegend=False
+        height=1200, title_text="📊 Experiment Overview Statistics", showlegend=False
     )
 
     return fig
@@ -275,7 +409,7 @@ def create_main_page():
     """Create the main landing page for GitHub Pages"""
 
     # Read CSV to get latest stats
-    df = pd.read_csv("overview.csv")
+    df = pd.read_csv("data/processed/auto_generated_overview.csv")
     df = parse_dates(df)
 
     total_experiments = len(df)
@@ -469,7 +603,7 @@ def create_main_page():
             <div class="viz-card">
                 <h2>📋 Raw Data</h2>
                 <p>Access the complete experiment data in CSV format for further analysis.</p>
-                <a href="overview.csv" class="btn">Download CSV</a>
+                <a href="data/processed/auto_generated_overview.csv" class="btn">Download CSV</a>
             </div>
             
             <div class="viz-card">
@@ -490,7 +624,7 @@ def create_main_page():
 </html>
 """
 
-    with open("index.html", "w") as f:
+    with open("output/visualizations/index.html", "w") as f:
         f.write(html_content)
 
 
@@ -499,25 +633,25 @@ if __name__ == "__main__":
 
     # Generate main landing page
     create_main_page()
-    print("✅ Main page saved as 'index.html'")
+    print("✅ Main page saved as 'output/visualizations/index.html'")
 
     # Generate timeline
     timeline_fig = create_timeline_graph()
-    timeline_fig.write_html("experiment_timeline.html")
-    print("✅ Timeline saved as 'experiment_timeline.html'")
+    timeline_fig.write_html("output/visualizations/experiment_timeline.html")
+    print("✅ Timeline saved as 'output/visualizations/experiment_timeline.html'")
 
     # Generate Gantt chart
     gantt_fig = create_gantt_chart()
-    gantt_fig.write_html("experiment_gantt.html")
-    print("✅ Gantt chart saved as 'experiment_gantt.html'")
+    gantt_fig.write_html("output/visualizations/experiment_gantt.html")
+    print("✅ Gantt chart saved as 'output/visualizations/experiment_gantt.html'")
 
     # Generate summary stats
     stats_fig = create_summary_stats()
-    stats_fig.write_html("experiment_stats.html")
-    print("✅ Statistics saved as 'experiment_stats.html'")
+    stats_fig.write_html("output/visualizations/experiment_stats.html")
+    print("✅ Statistics saved as 'output/visualizations/experiment_stats.html'")
 
     print("\n📈 All visualizations generated successfully!")
     print("🌐 Website ready for GitHub Pages deployment!")
     print(
-        "Files: index.html, experiment_timeline.html, experiment_gantt.html, experiment_stats.html"
+        "Files: output/visualizations/index.html, experiment_timeline.html, experiment_gantt.html, experiment_stats.html"
     )
