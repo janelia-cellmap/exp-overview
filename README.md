@@ -166,4 +166,5 @@ exp_[group]/
 - **Resolution**: Higher resolution (8nm) used for detailed cell boundaries, lower (16nm) for organelles
 
 ## Last Updated
+
 September 29, 2025
