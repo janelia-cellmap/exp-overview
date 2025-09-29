@@ -1,0 +1,42 @@
+Group,Setup,Target,Model Type,Starting Checkpoint,Max Iterations,Resolution (nm),Batch Size,Learning Rate,Creation Date,Still Running
+exp_mito,setup_15,mito,fly model,20250806_mito_mouse_distance_16nm/362k,90000,16,14,5.0e-05,,YES
+exp_mito,setup_16,mito,fly model,setup_15/80k,90000,16,14,5.0e-05,,YES
+exp_mito,setup_17,mito,fly model,setup_16/30k,90000,16,14,5.0e-05,,YES
+exp_mito,setup_18,mito,fly model,20250725_mito_all_mixed_distance_16nm/372k,90000,16,14,5.0e-05,,YES
+exp_mito,setup_19,mito,fly model,20250725_mito_all_mixed_distance_16nm/372k,90000,16,14,5.0e-05,,YES
+exp_pancreas,setup_07,mito,fly model,20250806_mito_mouse_distance_16nm/362k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_pancreas,setup_08,mito,fly model,20250725_mito_all_mixed_distance_16nm/568k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_pancreas,setup_09,mito,fly model,20250806_nuc_mouse_distance_32nm/342k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_pancreas,setup_10,mito,fly model,20250806_nuc_mouse_distance_32nm/342k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_pancreas,setup_12,mito,fly model,20250711_isg_ld_all_1/244k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_pancreas,setup_13,mito,fly model,20250711_isg_ld_all_1/244k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_pancreas,setup_14,mito,fly model,20250711_isg_ld_all_1/244k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cell,setup_20,cell,isolated_unet,config_2/278361,90000,8,14,5.0e-05,2025-09-29,YES
+exp_cell,setup_21,cell,isolated_unet,config_2/278361,50000,16,10,5.0e-05,2025-09-28,YES
+exp_cell,setup_22,cell,isolated_unet,config_2/278361,50000,32,10,5.0e-05,2025-09-28,YES
+exp_cell,setup_23,cell,isolated_unet,config_2/278361,50000,64,10,5.0e-05,2025-09-28,YES
+exp_cell,setup_24,cell,isolated_unet,config_2/278361,50000,128,10,5.0e-05,2025-09-28,YES
+exp_cell,setup_33,cell,isolated_unet,run07/432k,,8,14,5.0e-06,2025-09-29,YES
+exp_cell,setup_34,cell,isolated_unet,run07/432k,,64,14,5.0e-06,2025-09-29,NO
+exp_cerebellum,setup_0,mito,fly model,20250725_mito_all_mixed_distance_16nm/568k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cerebellum,setup_1,mito,fly model,20250725_mito_all_mixed_distance_16nm/80k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cerebellum,setup_2,mito,fly model,20250725_mito_all_mixed_distance_16nm/568k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cerebellum,setup_3,mito,fly model,20250725_mito_all_mixed_distance_16nm/80k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cerebellum,setup_4,mito,fly model,20250725_mito_all_mixed_distance_16nm/568k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cerebellum,setup_5,mito,fly model,20250725_mito_all_mixed_distance_16nm/80k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cerebellum,setup_6,mito,fly model,20250725_nuc_all_mixed_distance_32nm/80k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_cerebellum,setup_11,mito,fly model,20250725_nuc_all_mixed_distance_32nm/80k,90000,16,14,5.0e-06,2025-09-23,NO
+exp_c-elegen_v2,train_fly_model,various,fly model,from scratch,,,,,NO
+exp_c-elegen_v3,20250725_mito_all_mixed_distance_16nm,mito,fly model,from scratch,80000,16,,2025-07-25,NO
+exp_c-elegen_v3,20250725_mito_all_distance_16nm,mito,fly model,from scratch,80000+,16,,2025-07-25,NO
+exp_c-elegen_v3,20250725_nuc_all_mixed_distance_32nm,nucleus,fly model,from scratch,80000+,32,,2025-07-25,NO
+exp_c-elegen_v3,20250806_mito_mouse_distance_16nm,mito,fly model,from scratch,568000+,16,,2025-08-06,NO
+exp_c-elegen_v3,20250806_nuc_mouse_distance_32nm,nucleus,fly model,from scratch,342000+,32,,2025-08-06,NO
+exp_c-elegen_v3,[+80 more organelle runs],various,fly model,from scratch,varies,16-64,,2025-07-25/08-06,NO
+exp_c-elegen_v4,setup_25,mito+nuc+lyso,fly model,run07/432k,90000,8,,2025-09-29,YES
+exp_c-elegen_v4,setup_26,mito+nuc+lyso,fly model,run07/432k,90000,16,,2025-09-29,YES
+exp_c-elegen_v4,setup_27,mito+nuc+lyso,fly model,run07/432k,90000,8,,2025-09-29,YES
+exp_c-elegen_v4,setup_28,mito+nuc+lyso,fly model,run07/432k,90000,16,,2025-09-29,YES
+exp_c-elegen_v4,setup_29,er,fly model,run07/432k,90000,8,,2025-09-29,YES
+exp_c-elegen_v4,setup_31,ecs,fly model,run07/432k,90000,8,,2025-09-29,YES
+exp_c-elegen_v4,setup_32,ecs,fly model,run07/432k,90000,16,,2025-09-29,YES
