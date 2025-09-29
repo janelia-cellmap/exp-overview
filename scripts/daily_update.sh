@@ -10,8 +10,13 @@ TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 # Change to project directory
 cd /groups/cellmap/cellmap/zouinkhim/exp-overview
 
+# Activate conda environment
+source ~/miniforge3/etc/profile.d/conda.sh
+conda activate fly
+
 # Log the start of the process
 echo "[$TIMESTAMP] Starting daily update process..." >> logs/daily_update.log
+echo "[$TIMESTAMP] Activated conda environment: fly" >> logs/daily_update.log
 
 # Run the main update script
 echo "[$TIMESTAMP] Running run.sh..." >> logs/daily_update.log
