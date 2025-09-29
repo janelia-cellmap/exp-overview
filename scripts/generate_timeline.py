@@ -623,13 +623,13 @@ def create_main_page():
             <div class="viz-card">
                 <h2>📋 Raw Data</h2>
                 <p>Access the complete experiment data in CSV format for further analysis.</p>
-                <a href="data/processed/auto_generated_overview.csv" class="btn">Download CSV</a>
+                <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/data/processed/auto_generated_overview.csv" class="btn" target="_blank">Download CSV</a>
             </div>
             
             <div class="viz-card">
                 <h2>📖 Documentation</h2>
                 <p>Detailed documentation about all experiments, configurations, and model architectures.</p>
-                <a href="README.md" class="btn">Read Documentation</a>
+                <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/README.md" class="btn" target="_blank">Read Documentation</a>
             </div>
         </div>
         
