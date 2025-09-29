@@ -3,20 +3,15 @@ name: Generate and Deploy Experiment Timeline
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'exp-overview/**'
   pull_request:
     branches: [ main ]
-    paths:
-      - 'exp-overview/**'
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -25,31 +20,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pandas plotly numpy
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas plotly numpy
 
-    - name: Generate timeline visualizations
-      run: |
-        cd exp-overview
-        python scripts/generate_timeline.py
+      - name: Generate timeline visualizations
+        run: |
+          python scripts/generate_timeline.py
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
-      with:
-        path: './exp-overview'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # publish the repo root (since your site files live at the top level)
+          path: .
 
   deploy:
     environment:
@@ -58,6 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
