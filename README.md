@@ -12,11 +12,11 @@
 
 | Setup | Target | Model Type | Starting Checkpoint | Max Iterations | Resolution (nm) | Batch Size | Learning Rate |
 |-------|--------|------------|-------------------|----------------|-----------------|------------|---------------|
-| setup_15 | mito | fly model | 20250806_mito_mouse_distance_16nm/362k | 90,000 | 16 | TBD | TBD |
-| setup_16 | mito | fly model | setup_15/80k | 90,000 | 16 | TBD | TBD |
-| setup_17 | mito | fly model | setup_16/30k | 90,000 | 16 | TBD | TBD |
-| setup_18 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/372k | 90,000 | 16 | TBD | TBD |
-| setup_19 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/372k | 90,000 | 16 | TBD | TBD |
+| setup_15 | mito | fly model | 20250806_mito_mouse_distance_16nm/362k | 90,000 | 16 | 14 | 5.0e-05 |
+| setup_16 | mito | fly model | setup_15/80k | 90,000 | 16 | 14 | 5.0e-05 |
+| setup_17 | mito | fly model | setup_16/30k | 90,000 | 16 | 14 | 5.0e-05 |
+| setup_18 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/372k | 90,000 | 16 | 14 | 5.0e-05 |
+| setup_19 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/372k | 90,000 | 16 | 14 | 5.0e-05 |
 
 
 
@@ -26,11 +26,11 @@
 |-------|--------|------------|-------------------|----------------|-----------------|------------|---------------|---------------|
 | setup_07 | mito | fly model | 20250806_mito_mouse_distance_16nm/362k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
 | setup_08 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/568k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
-| setup_09 | mito | fly model | 20250806_nuc_mouse_distance_32nm/342k | 90,000 | 16 | 14 | TBD | 2025-09-23 |
-| setup_10 | mito | fly model | 20250806_nuc_mouse_distance_32nm/342k | 90,000 | 16 | 14 | TBD | 2025-09-23 |
-| setup_12 | mito | fly model | 20250711_isg_ld_all_1/244k | 90,000 | 16 | 14 | TBD | 2025-09-23 |
-| setup_13 | mito | fly model | 20250711_isg_ld_all_1/244k | 90,000 | 16 | 14 | TBD | 2025-09-23 |
-| setup_14 | mito | fly model | 20250711_isg_ld_all_1/244k | 90,000 | 16 | 14 | TBD | 2025-09-23 |
+| setup_09 | mito | fly model | 20250806_nuc_mouse_distance_32nm/342k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_10 | mito | fly model | 20250806_nuc_mouse_distance_32nm/342k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_12 | mito | fly model | 20250711_isg_ld_all_1/244k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_13 | mito | fly model | 20250711_isg_ld_all_1/244k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_14 | mito | fly model | 20250711_isg_ld_all_1/244k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
 
 ### 🧬 Cell Experiments (`exp_cell`)
 
@@ -38,24 +38,24 @@
 |-------|--------|------------|-------------------|----------------|-----------------|------------|---------------|---------------|
 | setup_20 | cell | isolated_unet | config_2/278361 | 90,000 | 8 | 14 | 5.0e-05 | 2025-09-29 |
 | setup_21 | cell | isolated_unet | config_2/278361 | 50,000 | 16 | 10 | 5.0e-05 | 2025-09-28 |
-| setup_22 | cell | isolated_unet | config_2/278361 | 50,000 | 32 | TBD | TBD | 2025-09-28 |
-| setup_23 | cell | isolated_unet | config_2/278361 | 50,000 | 64 | TBD | TBD | 2025-09-28 |
-| setup_24 | cell | isolated_unet | config_2/278361 | 50,000 | 128 | TBD | TBD | 2025-09-28 |
-| setup_33 | cell | isolated_unet | run07/432k | N/A | TBD | TBD | TBD | 2025-09-29 |
-| setup_34 | cell | isolated_unet | run07/432k | N/A | TBD | TBD | TBD | 2025-09-29 |
+| setup_22 | cell | isolated_unet | config_2/278361 | 50,000 | 32 | 10 | 5.0e-05 | 2025-09-28 |
+| setup_23 | cell | isolated_unet | config_2/278361 | 50,000 | 64 | 10 | 5.0e-05 | 2025-09-28 |
+| setup_24 | cell | isolated_unet | config_2/278361 | 50,000 | 128 | 10 | 5.0e-05 | 2025-09-28 |
+| setup_33 | cell | isolated_unet | run07/432k | N/A | 8 | 14 | 5.0e-06 | 2025-09-29 |
+| setup_34 | cell | isolated_unet | run07/432k | N/A | 64 | 14 | 5.0e-06 | 2025-09-29 |
 
 ### 🧠 Cerebellum Experiments (`exp_cerebellum`)
 
 | Setup | Target | Model Type | Starting Checkpoint | Max Iterations | Resolution (nm) | Batch Size | Learning Rate | Creation Date |
 |-------|--------|------------|-------------------|----------------|-----------------|------------|---------------|---------------|
-| setup_0 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/568k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
-| setup_1 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/80k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
-| setup_2 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/568k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
-| setup_3 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/80k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
-| setup_4 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/568k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
-| setup_5 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/80k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
-| setup_6 | mito | fly model | 20250725_nuc_all_mixed_distance_32nm/80k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
-| setup_11 | mito | fly model | 20250725_nuc_all_mixed_distance_32nm/80k | 90,000 | 16 | TBD | TBD | 2025-09-23 |
+| setup_0 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/568k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_1 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/80k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_2 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/568k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_3 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/80k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_4 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/568k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_5 | mito | fly model | 20250725_mito_all_mixed_distance_16nm/80k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_6 | mito | fly model | 20250725_nuc_all_mixed_distance_32nm/80k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
+| setup_11 | mito | fly model | 20250725_nuc_all_mixed_distance_32nm/80k | 90,000 | 16 | 14 | 5.0e-06 | 2025-09-23 |
 
 ### 🧠 C. elegans v2 Experiments (`exp_c-elegen/v2`)
 
@@ -78,13 +78,13 @@
 
 | Setup | Target | Model Type | Starting Checkpoint | Max Iterations | Resolution (nm) | Creation Date |
 |-------|--------|------------|-------------------|----------------|-----------------|---------------|
-| setup_25 | TBD | fly model | TBD | 90,000 | TBD | 2025-09-29 |
-| setup_26 | TBD | fly model | TBD | TBD | TBD | 2025-09-29 |
-| setup_27 | TBD | fly model | TBD | TBD | TBD | 2025-09-29 |
-| setup_28 | TBD | fly model | TBD | TBD | TBD | 2025-09-29 |
-| setup_29 | TBD | fly model | TBD | TBD | TBD | 2025-09-29 |
-| setup_31 | TBD | fly model | TBD | TBD | TBD | 2025-09-29 |
-| setup_32 | TBD | fly model | TBD | TBD | TBD | 2025-09-29 |
+| setup_25 | mito+nuc+lyso | fly model | run07/432k | 90,000 | 8 | 2025-09-29 |
+| setup_26 | mito+nuc+lyso | fly model | run07/432k | 90,000 | 16 | 2025-09-29 |
+| setup_27 | mito+nuc+lyso | fly model | run07/432k | 90,000 | 8 | 2025-09-29 |
+| setup_28 | mito+nuc+lyso | fly model | run07/432k | 90,000 | 16 | 2025-09-29 |
+| setup_29 | er | fly model | run07/432k | 90,000 | 8 | 2025-09-29 |
+| setup_31 | ecs | fly model | run07/432k | 90,000 | 8 | 2025-09-29 |
+| setup_32 | ecs | fly model | run07/432k | 90,000 | 16 | 2025-09-29 |
 
 ## Experiment Groups
 
