@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment Timeline Dashboard</title>
+    <title>CellMap Experiment Timeline Dashboard</title>
     <style>
         * {
             margin: 0;
@@ -13,212 +13,404 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .top-bar {
+            background: #1a365d;
+            color: white;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .top-bar a {
+            color: #63b3ed;
+            text-decoration: none;
+        }
+        
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        
+        .header {
+            background: white;
+            border-bottom: 3px solid #e2e8f0;
+            padding: 2rem 0;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
         
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 3rem;
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
         
         .logos {
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            gap: 1.5rem;
         }
         
         .logo {
-            height: 80px;
-            max-width: 200px;
+            height: 60px;
+            max-width: 150px;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
         
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .title-section {
+            flex: 1;
+            min-width: 300px;
         }
         
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .title-section h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+        
+        .title-section .subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            font-weight: 400;
+        }
+        
+        .mission-section {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .mission-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .stats-section {
+            background: white;
+            padding: 3rem 0;
+            border-bottom: 1px solid #e2e8f0;
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            text-align: center;
         }
         
         .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2b6cb0;
             display: block;
             margin-bottom: 0.5rem;
         }
         
         .stat-label {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .visualizations-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .visualizations {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
         
         .viz-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
         }
         
         .viz-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         
         .viz-card h2 {
-            color: #333;
+            color: #1a365d;
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
         
         .viz-card p {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
         
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #2b6cb0;
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #2c5282;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #2d3748;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+            border: 1px solid #90cdf4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: #1e4a72;
+            margin-bottom: 0.5rem;
         }
         
         .footer {
+            background: #1a365d;
+            color: white;
+            padding: 2rem 0;
             text-align: center;
-            margin-top: 3rem;
-            color: white;
-            opacity: 0.8;
         }
         
-        .github-link {
-            color: white;
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #63b3ed;
             text-decoration: none;
-            margin-top: 1rem;
-            display: inline-block;
+            font-size: 0.9rem;
         }
         
-        .github-link:hover {
+        .footer-links a:hover {
             text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logos {
+                justify-content: center;
+            }
+            
+            .title-section h1 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logos">
-                <img src="imgs/CellMapLogo.png" alt="CellMap Logo" class="logo">
-                <img src="imgs/HHMI_Janelia_Logo_Color.png" alt="HHMI Janelia Logo" class="logo">
-            </div>
-            <h1>🧪 Experiment Timeline Dashboard</h1>
-            <p>Machine Learning Model Training Experiments Across Biological Groups</p>
+    <div class="top-bar">
+        <div class="container">
+            <span>🔬 Janelia Research Campus | CellMap Project Team | </span>
+            <a href="https://www.janelia.org/project-team/cellmap">Visit Main CellMap Site</a>
         </div>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <span class="stat-number">61</span>
-                <span class="stat-label">Total Experiments</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">33</span>
-                <span class="stat-label">Currently Running</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">28</span>
-                <span class="stat-label">Completed</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">6</span>
-                <span class="stat-label">Experiment Groups</span>
+    </div>
+    
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logos">
+                    <img src="imgs/CellMapLogo.png" alt="CellMap Logo" class="logo">
+                    <img src="imgs/HHMI_Janelia_Logo_Color.png" alt="HHMI Janelia Logo" class="logo">
+                </div>
+                <div class="title-section">
+                    <h1>Experiment Timeline Dashboard</h1>
+                    <p class="subtitle">Machine Learning Model Training Experiments Across Biological Groups</p>
+                </div>
             </div>
         </div>
-        
-        <div class="visualizations">
-            <div class="viz-card">
-                <h2>📅 Interactive Timeline</h2>
-                <p>Explore the chronological progression of all experiments with detailed hover information and group-based color coding.</p>
-                <a href="experiment_timeline.html" class="btn">View Timeline</a>
-            </div>
-            
-            <div class="viz-card">
-                <h2>📊 Gantt Chart</h2>
-                <p>Visualize experiment durations and overlaps in a comprehensive Gantt chart format.</p>
-                <a href="experiment_gantt.html" class="btn">View Gantt Chart</a>
-            </div>
-            
-            <div class="viz-card">
-                <h2>📈 Statistics Dashboard</h2>
-                <p>Comprehensive statistics and breakdowns by experiment group, model type, and targets.</p>
-                <a href="experiment_stats.html" class="btn">View Statistics</a>
-            </div>
-            
-            <div class="viz-card">
-                <h2>📋 Raw Data</h2>
-                <p>Access the complete experiment data in CSV format for further analysis.</p>
-                <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/data/processed/auto_generated_overview.csv" class="btn" target="_blank">Download CSV</a>
-            </div>
-            
-            <div class="viz-card">
-                <h2>📖 Documentation</h2>
-                <p>Detailed documentation about all experiments, configurations, and model architectures.</p>
-                <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/README.md" class="btn" target="_blank">Read Documentation</a>
+    </div>
+    
+    <div class="mission-section">
+        <div class="container">
+            <div class="mission-text">
+                <p>Tracking and visualizing the progress of machine learning experiments designed to automatically segment cellular organelles from high-resolution electron microscopy data. Our mission is to advance automated image analysis for biological discovery through systematic model training and evaluation.</p>
             </div>
         </div>
-        
-        <div class="footer">
-            <p>Last updated: 2025-09-29 18:15 UTC</p>
-            <a href="https://github.com/mzouink/guided_net" class="github-link">
-                🔗 View on GitHub
-            </a>
+    </div>
+    
+    <div class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">61</span>
+                    <span class="stat-label">Total Experiments</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">33</span>
+                    <span class="stat-label">Currently Running</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">28</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Experiment Groups</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="highlight-box">
+        <div class="container">
+            <h3>🎯 Join the CellMap Segmentation Challenge</h3>
+            <p>Compete to create the next, best AI-driven image segmentation model using hundreds of our meticulously annotated high-resolution EM images as training data.</p>
+        </div>
+    </div>
+    
+    <div class="visualizations-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Interactive Data Visualizations</h2>
+                <p>Explore comprehensive visualizations of our machine learning experiment timeline, performance metrics, and training progress across different biological datasets.</p>
+            </div>
+            
+            <div class="visualizations">
+                <div class="viz-card">
+                    <h2>📅 Interactive Timeline</h2>
+                    <p>Explore the chronological progression of all experiments with detailed hover information, group-based color coding, and real-time status updates.</p>
+                    <a href="experiment_timeline.html" class="btn">View Timeline</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>📊 Gantt Chart</h2>
+                    <p>Visualize experiment durations, overlaps, and training periods in a comprehensive timeline format showing real training dates and progress.</p>
+                    <a href="experiment_gantt.html" class="btn">View Gantt Chart</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>📈 Statistics Dashboard</h2>
+                    <p>Comprehensive statistics and breakdowns by experiment group, model type, organelle targets, and training configurations.</p>
+                    <a href="experiment_stats.html" class="btn">View Statistics</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>� Raw Dataset</h2>
+                    <p>Access the complete experiment metadata in CSV format for custom analysis, including training parameters and performance metrics.</p>
+                    <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/data/processed/auto_generated_overview.csv" class="btn btn-secondary" target="_blank">Download CSV</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>� OpenOrganelle Portal</h2>
+                    <p>Explore our interactive data portal with high-resolution EM images and annotations used for training these models.</p>
+                    <a href="https://openorganelle.janelia.org/" class="btn btn-secondary" target="_blank">Visit Portal</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>📚 Documentation</h2>
+                    <p>Detailed technical documentation about experiment configurations, model architectures, and training methodologies.</p>
+                    <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/README.md" class="btn btn-secondary" target="_blank">Read Documentation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2025 Howard Hughes Medical Institute | Janelia Research Campus</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Last updated: 2025-09-29 18:17 UTC</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.janelia.org/project-team/cellmap">CellMap Project</a>
+                    <a href="https://cellmapchallenge.janelia.org/">Segmentation Challenge</a>
+                    <a href="https://openorganelle.janelia.org/">OpenOrganelle</a>
+                    <a href="https://github.com/janelia-cellmap">GitHub</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
