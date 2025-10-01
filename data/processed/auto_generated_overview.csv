@@ -4,7 +4,7 @@ exp_cell,setup_21,cell,fly model,config_2/278361,60000,16,10,5e-05,2025-09-30,YE
 exp_cell,setup_22,cell,fly model,config_2/278361,60000,32,10,5e-05,2025-09-30,YES,YES,2025-09-30
 exp_cell,setup_23,cell,fly model,config_2/278361,60000,64,10,5e-05,2025-09-30,YES,YES,2025-09-30
 exp_cell,setup_24,cell,fly model,config_2/278361,60000,128,10,5e-05,2025-09-30,YES,YES,2025-09-30
-exp_cell,setup_33,cell,fly model,run07/432000k,60000,8,14,5e-06,2025-10-01,YES,YES,2025-10-01
+exp_cell,setup_33,cell,fly model,run07/432000k,70000,8,14,5e-06,2025-10-01,YES,YES,2025-10-01
 exp_cerebellum,setup_0,mito,fly model,20250725_mito_all_mixed_distance_16nm/568000k,510000,16,14,5e-06,2025-09-23,NO,NO,2025-09-23
 exp_cerebellum,setup_1,mito,fly model,20250725_mito_all_mixed_distance_16nm/80000k,500000,16,14,5e-06,2025-09-23,NO,NO,2025-09-23
 exp_cerebellum,setup_11,nuc,fly model,20250725_nuc_all_mixed_distance_32nm/80000k,480000,32,14,5e-06,2025-09-23,NO,NO,2025-09-23
@@ -51,7 +51,7 @@ exp_c-elegen_v3,20250806_perox_mouse_lsd_16nm,er,fly model,run08/438000k,306000,
 exp_c-elegen_v4,setup_25,mito+nuc+lyso+ld+yolk+perox,fly model,run07/432000k,210000,8,14,5e-06,2025-10-01,YES,NO,2025-10-01
 exp_c-elegen_v4,setup_26,mito+nuc+lyso+ld+yolk+perox,fly model,run07/432000k,230000,16,14,5e-06,2025-10-01,YES,NO,2025-10-01
 exp_c-elegen_v4,setup_27,mito+nuc+lyso+ld+yolk,fly model,run07/432000k,210000,8,14,5e-06,2025-10-01,YES,NO,2025-10-01
-exp_c-elegen_v4,setup_28,mito+nuc+lyso+ld+yolk,fly model,run07/432000k,210000,16,14,5e-06,2025-10-01,YES,NO,2025-10-01
+exp_c-elegen_v4,setup_28,mito+nuc+lyso+ld+yolk,fly model,run07/432000k,220000,16,14,5e-06,2025-10-01,YES,NO,2025-10-01
 exp_c-elegen_v4,setup_29,er,fly model,all/540000k,240000,8,14,5e-06,2025-10-01,YES,NO,2025-10-01
 exp_c-elegen_v4,setup_31,ecs,fly model,all/540000k,250000,8,14,5e-06,2025-10-01,YES,NO,2025-10-01
 exp_c-elegen_v4,setup_32,ecs,fly model,all/540000k,250000,16,14,5e-06,2025-10-01,YES,NO,2025-10-01
