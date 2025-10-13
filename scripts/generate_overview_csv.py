@@ -557,7 +557,7 @@ def extract_experiment_from_config(config, group_name, setup_name, setup_dir):
 
     # Get trained until date from latest checkpoint
     experiment_data["trained_until"] = get_trained_until_date(setup_dir)
-    
+
     # Extract dataset information from yaml file
     experiment_data["datasets_used"] = None
     dataset_details = None
@@ -621,25 +621,25 @@ def extract_dataset_info_from_yaml(yaml_file_path):
     - detailed_dict: {"dataset1": ["crop1", "crop2"], "dataset2": ["crop3"]}
     """
     from pathlib import Path
-    
+
     try:
         if not Path(yaml_file_path).exists():
             return None, None
-            
+
         with open(yaml_file_path, "r") as f:
             data = yaml.safe_load(f)
-        
+
         if not data or "datasets" not in data:
             return None, None
-        
+
         datasets = data["datasets"]
         dataset_crop_counts = {}
         dataset_crop_details = {}
-        
+
         for dataset_name, dataset_info in datasets.items():
             if not isinstance(dataset_info, dict):
                 continue
-            
+
             # Count crops (excluding 'val', 'raw', 'contrast', etc.)
             crops = dataset_info.get("crops", {})
             if isinstance(crops, dict):
@@ -650,19 +650,21 @@ def extract_dataset_info_from_yaml(yaml_file_path):
                     if crop_key.lower() in ["inference_upscale", "raw", "contrast"]:
                         continue
                     crop_names.append(crop_key)
-                
+
                 if crop_names:
                     dataset_crop_counts[dataset_name] = len(crop_names)
                     dataset_crop_details[dataset_name] = sorted(crop_names)
-        
+
         # Create summary string
         if dataset_crop_counts:
-            summary_parts = [f"{ds}: {count}" for ds, count in sorted(dataset_crop_counts.items())]
+            summary_parts = [
+                f"{ds}: {count}" for ds, count in sorted(dataset_crop_counts.items())
+            ]
             summary_string = "; ".join(summary_parts)
             return summary_string, dataset_crop_details
         else:
             return None, None
-            
+
     except Exception as e:
         print(f"Warning: Could not parse YAML file {yaml_file_path}: {e}")
         return None, None
@@ -674,23 +676,23 @@ def get_yaml_file_path(setup_dir, yaml_filename):
     Checks multiple possible locations.
     """
     from pathlib import Path
-    
+
     # Check in the setup directory itself
     yaml_path = setup_dir / yaml_filename
     if yaml_path.exists():
         return yaml_path
-    
+
     # Check in parent preparation/yamls/generated directory
     parent = setup_dir.parent.parent
     yaml_path = parent / "preparation" / "yamls" / "generated" / yaml_filename
     if yaml_path.exists():
         return yaml_path
-    
+
     # Check in parent yamls directory
     yaml_path = parent / "yamls" / yaml_filename
     if yaml_path.exists():
         return yaml_path
-    
+
     return None
 
 
@@ -1056,32 +1058,34 @@ def create_sample_data():
     return scan_experiment_directories()
 
 
-def write_data_usage_yaml(data_usage, output_file="data/processed/data_usage_overview.yaml"):
+def write_data_usage_yaml(
+    data_usage, output_file="data/processed/data_usage_overview.yaml"
+):
     """
     Write the data usage information to a YAML file.
-    
+
     Args:
         data_usage: Dictionary mapping setup names to their dataset usage
         output_file: Path to output YAML file
     """
     import os
     from pathlib import Path
-    
+
     # Ensure output directory exists
     output_path = Path(output_file)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     # Prepare the data structure for YAML output
     yaml_data = {}
     for setup_name, datasets in sorted(data_usage.items()):
         yaml_data[setup_name] = {}
         for dataset_name, crops in sorted(datasets.items()):
             yaml_data[setup_name][dataset_name] = sorted(crops)
-    
+
     # Write to YAML file
     with open(output_file, "w") as f:
         yaml.dump(yaml_data, f, default_flow_style=False, sort_keys=False)
-    
+
     print(f"Data usage overview written to {output_file}")
 
 
@@ -1222,7 +1226,7 @@ def main():
     print(
         f"Generated {len(scanned_data)} experiment entries in data/processed/auto_generated_overview.csv"
     )
-    
+
     # Write data usage overview YAML
     print("\nGenerating data usage overview YAML...")
     write_data_usage_yaml(data_usage, "data/processed/data_usage_overview.yaml")

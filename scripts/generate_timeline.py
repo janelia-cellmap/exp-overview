@@ -41,6 +41,26 @@ def parse_dates(df):
     return df
 
 
+def format_datasets_for_hover(datasets_str):
+    """
+    Format the datasets string for better display in hover tooltips.
+    Converts semicolon-separated list to line breaks.
+    """
+    if pd.isna(datasets_str) or datasets_str == "" or datasets_str == "N/A":
+        return "N/A"
+    
+    # Split by semicolon and rejoin with HTML line breaks
+    datasets = datasets_str.split(";")
+    # Limit to first 15 datasets to avoid extremely long tooltips
+    if len(datasets) > 15:
+        displayed = datasets[:15]
+        formatted = "<br>  • ".join([d.strip() for d in displayed])
+        return f"<br>  • {formatted}<br>  ... and {len(datasets) - 15} more"
+    else:
+        formatted = "<br>  • ".join([d.strip() for d in datasets])
+        return f"<br>  • {formatted}"
+
+
 def create_timeline_graph():
     """Create interactive timeline visualization"""
 
@@ -49,6 +69,9 @@ def create_timeline_graph():
 
     # Parse dates
     df = parse_dates(df)
+    
+    # Format datasets for better display
+    df["Datasets_Formatted"] = df["Datasets Used"].apply(format_datasets_for_hover)
 
     # Extract setup numbers for sorting (handle non-setup entries)
     def extract_setup_num(setup):
@@ -115,7 +138,7 @@ def create_timeline_graph():
                 + "Creation Date: %{x}<br>"
                 + "Trained Until: %{customdata[8]}<br>"
                 + "Starting Checkpoint: %{customdata[9]}<br>"
-                + "Datasets Used: %{customdata[10]}<br>"
+                + "Datasets Used:%{customdata[10]}<br>"
                 + "<extra></extra>",
                 customdata=group_data[
                     [
@@ -129,7 +152,7 @@ def create_timeline_graph():
                         "Learning Rate",
                         "Trained Until",
                         "Starting Checkpoint",
-                        "Datasets Used",
+                        "Datasets_Formatted",
                     ]
                 ].values,
             )
@@ -147,6 +170,12 @@ def create_timeline_graph():
         height=800,
         width=1200,
         hovermode="closest",
+        hoverlabel=dict(
+            bgcolor="white",
+            font_size=12,
+            font_family="monospace",
+            align="left",
+        ),
         legend=dict(orientation="v", yanchor="top", y=1, xanchor="left", x=1.02),
         margin=dict(r=200),
         template="plotly_white",
@@ -174,6 +203,9 @@ def create_gantt_chart():
 
     df = pd.read_csv("data/processed/auto_generated_overview.csv")
     df = parse_dates(df)
+    
+    # Format datasets for better display
+    df["Datasets_Formatted"] = df["Datasets Used"].apply(format_datasets_for_hover)
 
     # Parse both creation and trained until dates
     df["Creation Date Parsed"] = pd.to_datetime(df["Creation Date"], errors="coerce")
@@ -255,7 +287,7 @@ def create_gantt_chart():
         batch_size_str = f"{row.get('Batch Size', 'N/A')}"
         learning_rate_str = f"{row.get('Learning Rate', 'N/A')}"
         checkpoint_str = f"{row.get('Starting Checkpoint', 'N/A')}"
-        datasets_str = f"{row.get('Datasets Used', 'N/A')}"
+        datasets_formatted = row.get('Datasets_Formatted', 'N/A')
 
         fig.add_trace(
             go.Scatter(
@@ -285,7 +317,7 @@ def create_gantt_chart():
                 + f"Learning Rate: {learning_rate_str}<br>"
                 + f"Starting Checkpoint: {checkpoint_str}<br>"
                 + f"LSD: {row['LSD']}<br>"
-                + f"Datasets Used: {datasets_str}<br>"
+                + f"Datasets Used:{datasets_formatted}<br>"
                 + "<extra></extra>",
                 showlegend=False,
             )
@@ -299,6 +331,12 @@ def create_gantt_chart():
         yaxis_title="Experiments",
         height=max(600, len(df) * 25),
         yaxis=dict(tickvals=list(range(len(df))), ticktext=df["Setup"].tolist()),
+        hoverlabel=dict(
+            bgcolor="white",
+            font_size=12,
+            font_family="monospace",
+            align="left",
+        ),
         template="plotly_white",
     )
 
