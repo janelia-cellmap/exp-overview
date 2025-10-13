@@ -42,6 +42,7 @@ class ExperimentEntry:
     still_running: str = "NO"
     lsd: str = "NO"
     trained_until: Optional[str] = None
+    datasets_used: Optional[str] = None
 
     def to_dict(self):
         """Convert the entry to a dictionary for CSV writing."""
@@ -59,6 +60,7 @@ class ExperimentEntry:
             "Still Running": self.still_running,
             "LSD": self.lsd,
             "Trained Until": self.trained_until,
+            "Datasets Used": self.datasets_used,
         }
 
 
@@ -81,8 +83,10 @@ class ExperimentOverviewGenerator:
             "Still Running",
             "LSD",
             "Trained Until",
+            "Datasets Used",
         ]
         self.experiments = []
+        self.data_usage = {}  # Store detailed data usage for YAML export
 
     def load_existing_data(self):
         """Load existing data from CSV file if it exists."""
@@ -148,6 +152,7 @@ def scan_experiment_directories(base_path="/groups/cellmap/cellmap/zouinkhim"):
     from pathlib import Path
 
     experiments = []
+    all_data_usage = {}
 
     # Define experiment directory patterns
     exp_dirs = [
@@ -168,18 +173,26 @@ def scan_experiment_directories(base_path="/groups/cellmap/cellmap/zouinkhim"):
 
         if exp_dir == "exp_c-elegen":
             # Handle special structure for c-elegen
-            experiments.extend(scan_c_elegen_directory(exp_path))
+            exps, data_usage = scan_c_elegen_directory(exp_path)
+            experiments.extend(exps)
+            all_data_usage.update(data_usage)
         elif exp_dir == "ex_mito":
             # Handle ex_mito structure
-            experiments.extend(scan_ex_mito_directory(exp_path))
+            exps, data_usage = scan_ex_mito_directory(exp_path)
+            experiments.extend(exps)
+            all_data_usage.update(data_usage)
         elif exp_dir == "exp_salivary":
             # Handle exp_salivary (which contains exp_mito runs due to naming mistake)
-            experiments.extend(scan_standard_exp_directory(exp_path, "exp_mito"))
+            exps, data_usage = scan_standard_exp_directory(exp_path, "exp_mito")
+            experiments.extend(exps)
+            all_data_usage.update(data_usage)
         else:
             # Handle standard experiment structure
-            experiments.extend(scan_standard_exp_directory(exp_path, exp_dir))
+            exps, data_usage = scan_standard_exp_directory(exp_path, exp_dir)
+            experiments.extend(exps)
+            all_data_usage.update(data_usage)
 
-    return experiments
+    return experiments, all_data_usage
 
 
 def scan_standard_exp_directory(exp_path, group_name):
@@ -189,10 +202,11 @@ def scan_standard_exp_directory(exp_path, group_name):
     import os
 
     experiments = []
+    data_usage = {}
     runs_path = exp_path / "runs"
 
     if not runs_path.exists():
-        return experiments
+        return experiments, data_usage
 
     # Get all setup directories
     setup_dirs = [
@@ -209,17 +223,24 @@ def scan_standard_exp_directory(exp_path, group_name):
                 config = yaml.safe_load(f)
 
             # Extract experiment info
-            experiment_data = extract_experiment_from_config(
+            result = extract_experiment_from_config(
                 config, group_name, setup_dir.name, setup_dir
             )
-            if experiment_data:
+            if result:
+                if isinstance(result, tuple):
+                    experiment_data, dataset_details = result
+                    if dataset_details:
+                        data_usage[setup_dir.name] = dataset_details
+                else:
+                    # Backwards compatibility
+                    experiment_data = result
                 experiments.append(experiment_data)
 
         except Exception as e:
             print(f"Error reading config for {setup_dir}: {e}")
             continue
 
-    return experiments
+    return experiments, data_usage
 
 
 def scan_c_elegen_directory(exp_path):
@@ -228,6 +249,7 @@ def scan_c_elegen_directory(exp_path):
     from pathlib import Path
 
     experiments = []
+    data_usage = {}
 
     # Check v2, v3, v4 subdirectories
     for version_dir in ["v2", "v3", "v4"]:
@@ -241,7 +263,9 @@ def scan_c_elegen_directory(exp_path):
             # v3 has train subdirectory with runs
             train_path = version_path / "train"
             if train_path.exists():
-                experiments.extend(scan_v3_train_directory(train_path, group_name))
+                exps, usage = scan_v3_train_directory(train_path, group_name)
+                experiments.extend(exps)
+                data_usage.update(usage)
         elif version_dir == "v4":
             # v4 has train/runs structure
             runs_path = version_path / "train" / "runs"
@@ -257,20 +281,27 @@ def scan_c_elegen_directory(exp_path):
                         try:
                             with open(config_file, "r") as f:
                                 config = yaml.safe_load(f)
-                            experiment_data = extract_experiment_from_config(
+                            result = extract_experiment_from_config(
                                 config, group_name, setup_dir.name, setup_dir
                             )
-                            if experiment_data:
+                            if result:
+                                if isinstance(result, tuple):
+                                    experiment_data, dataset_details = result
+                                    if dataset_details:
+                                        data_usage[setup_dir.name] = dataset_details
+                                else:
+                                    experiment_data = result
                                 experiments.append(experiment_data)
                         except Exception as e:
                             print(f"Error reading config for {setup_dir}: {e}")
 
-    return experiments
+    return experiments, data_usage
 
 
 def scan_v3_train_directory(train_path, group_name):
     """Scan v3 train directory for experiments."""
     experiments = []
+    data_usage = {}
 
     # Look for run directories in train/runs
     runs_path = train_path / "runs"
@@ -295,6 +326,7 @@ def scan_v3_train_directory(train_path, group_name):
                 "learning_rate": None,
                 "lsd": "NO",  # Default
                 "trained_until": None,
+                "datasets_used": None,
             }
 
             # Try to get starting checkpoint from train.py
@@ -351,12 +383,13 @@ def scan_v3_train_directory(train_path, group_name):
 
             experiments.append(experiment_data)
 
-    return experiments
+    return experiments, data_usage
 
 
 def scan_ex_mito_directory(exp_path):
     """Scan ex_mito directory."""
     experiments = []
+    data_usage = {}
 
     # Look for yaml files that might contain experiment configs
     yaml_path = exp_path / "yamls"
@@ -419,7 +452,7 @@ def scan_ex_mito_directory(exp_path):
                 print(f"Error processing {yaml_file}: {e}")
                 continue
 
-    return experiments
+    return experiments, data_usage
 
 
 def extract_experiment_from_config(config, group_name, setup_name, setup_dir):
@@ -524,6 +557,17 @@ def extract_experiment_from_config(config, group_name, setup_name, setup_dir):
 
     # Get trained until date from latest checkpoint
     experiment_data["trained_until"] = get_trained_until_date(setup_dir)
+    
+    # Extract dataset information from yaml file
+    experiment_data["datasets_used"] = None
+    dataset_details = None
+    if "paths" in config and "yaml_file" in config["paths"]:
+        yaml_filename = config["paths"]["yaml_file"]
+        yaml_file_path = get_yaml_file_path(setup_dir, yaml_filename)
+        if yaml_file_path:
+            summary, details = extract_dataset_info_from_yaml(yaml_file_path)
+            experiment_data["datasets_used"] = summary
+            dataset_details = details
 
     # Skip experiments that have no checkpoint files AND are not running
     # This filters out incomplete/failed experiments
@@ -546,7 +590,7 @@ def extract_experiment_from_config(config, group_name, setup_name, setup_dir):
         )
         return None
 
-    return experiment_data
+    return experiment_data, dataset_details
 
 
 def extract_checkpoint_name(checkpoint_path):
@@ -567,6 +611,87 @@ def extract_checkpoint_name(checkpoint_path):
     else:
         # Just return the last two parts of the path
         return f"{path.parent.name}/{path.name}"
+
+
+def extract_dataset_info_from_yaml(yaml_file_path):
+    """
+    Extract dataset information from a training YAML file.
+    Returns a tuple: (summary_string, detailed_dict)
+    - summary_string: "dataset1: X crops, dataset2: Y crops"
+    - detailed_dict: {"dataset1": ["crop1", "crop2"], "dataset2": ["crop3"]}
+    """
+    from pathlib import Path
+    
+    try:
+        if not Path(yaml_file_path).exists():
+            return None, None
+            
+        with open(yaml_file_path, "r") as f:
+            data = yaml.safe_load(f)
+        
+        if not data or "datasets" not in data:
+            return None, None
+        
+        datasets = data["datasets"]
+        dataset_crop_counts = {}
+        dataset_crop_details = {}
+        
+        for dataset_name, dataset_info in datasets.items():
+            if not isinstance(dataset_info, dict):
+                continue
+            
+            # Count crops (excluding 'val', 'raw', 'contrast', etc.)
+            crops = dataset_info.get("crops", {})
+            if isinstance(crops, dict):
+                # Filter out non-crop entries and extract crop names
+                crop_names = []
+                for crop_key in crops.keys():
+                    # Skip entries that don't look like crop names
+                    if crop_key.lower() in ["inference_upscale", "raw", "contrast"]:
+                        continue
+                    crop_names.append(crop_key)
+                
+                if crop_names:
+                    dataset_crop_counts[dataset_name] = len(crop_names)
+                    dataset_crop_details[dataset_name] = sorted(crop_names)
+        
+        # Create summary string
+        if dataset_crop_counts:
+            summary_parts = [f"{ds}: {count}" for ds, count in sorted(dataset_crop_counts.items())]
+            summary_string = "; ".join(summary_parts)
+            return summary_string, dataset_crop_details
+        else:
+            return None, None
+            
+    except Exception as e:
+        print(f"Warning: Could not parse YAML file {yaml_file_path}: {e}")
+        return None, None
+
+
+def get_yaml_file_path(setup_dir, yaml_filename):
+    """
+    Find the full path to the yaml file referenced in config.yaml.
+    Checks multiple possible locations.
+    """
+    from pathlib import Path
+    
+    # Check in the setup directory itself
+    yaml_path = setup_dir / yaml_filename
+    if yaml_path.exists():
+        return yaml_path
+    
+    # Check in parent preparation/yamls/generated directory
+    parent = setup_dir.parent.parent
+    yaml_path = parent / "preparation" / "yamls" / "generated" / yaml_filename
+    if yaml_path.exists():
+        return yaml_path
+    
+    # Check in parent yamls directory
+    yaml_path = parent / "yamls" / yaml_filename
+    if yaml_path.exists():
+        return yaml_path
+    
+    return None
 
 
 def get_max_iterations_from_checkpoints(setup_dir):
@@ -931,6 +1056,35 @@ def create_sample_data():
     return scan_experiment_directories()
 
 
+def write_data_usage_yaml(data_usage, output_file="data/processed/data_usage_overview.yaml"):
+    """
+    Write the data usage information to a YAML file.
+    
+    Args:
+        data_usage: Dictionary mapping setup names to their dataset usage
+        output_file: Path to output YAML file
+    """
+    import os
+    from pathlib import Path
+    
+    # Ensure output directory exists
+    output_path = Path(output_file)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Prepare the data structure for YAML output
+    yaml_data = {}
+    for setup_name, datasets in sorted(data_usage.items()):
+        yaml_data[setup_name] = {}
+        for dataset_name, crops in sorted(datasets.items()):
+            yaml_data[setup_name][dataset_name] = sorted(crops)
+    
+    # Write to YAML file
+    with open(output_file, "w") as f:
+        yaml.dump(yaml_data, f, default_flow_style=False, sort_keys=False)
+    
+    print(f"Data usage overview written to {output_file}")
+
+
 def compare_csvs(original_csv, generated_csv):
     """Compare the original CSV with the auto-generated CSV."""
     import pandas as pd
@@ -1061,12 +1215,17 @@ def main():
     print(
         "Generating data/processed/auto_generated_overview.csv by scanning experiment directories..."
     )
-    scanned_data = create_sample_data()
+    scanned_data, data_usage = create_sample_data()
     generator.add_experiments_from_data(scanned_data)
+    generator.data_usage = data_usage
     generator.write_csv()
     print(
         f"Generated {len(scanned_data)} experiment entries in data/processed/auto_generated_overview.csv"
     )
+    
+    # Write data usage overview YAML
+    print("\nGenerating data usage overview YAML...")
+    write_data_usage_yaml(data_usage, "data/processed/data_usage_overview.yaml")
 
     # Compare with original overview.csv
     print("\nComparing with original overview.csv...")

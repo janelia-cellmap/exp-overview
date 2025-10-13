@@ -115,6 +115,7 @@ def create_timeline_graph():
                 + "Creation Date: %{x}<br>"
                 + "Trained Until: %{customdata[8]}<br>"
                 + "Starting Checkpoint: %{customdata[9]}<br>"
+                + "Datasets Used: %{customdata[10]}<br>"
                 + "<extra></extra>",
                 customdata=group_data[
                     [
@@ -128,6 +129,7 @@ def create_timeline_graph():
                         "Learning Rate",
                         "Trained Until",
                         "Starting Checkpoint",
+                        "Datasets Used",
                     ]
                 ].values,
             )
@@ -253,6 +255,7 @@ def create_gantt_chart():
         batch_size_str = f"{row.get('Batch Size', 'N/A')}"
         learning_rate_str = f"{row.get('Learning Rate', 'N/A')}"
         checkpoint_str = f"{row.get('Starting Checkpoint', 'N/A')}"
+        datasets_str = f"{row.get('Datasets Used', 'N/A')}"
 
         fig.add_trace(
             go.Scatter(
@@ -282,6 +285,7 @@ def create_gantt_chart():
                 + f"Learning Rate: {learning_rate_str}<br>"
                 + f"Starting Checkpoint: {checkpoint_str}<br>"
                 + f"LSD: {row['LSD']}<br>"
+                + f"Datasets Used: {datasets_str}<br>"
                 + "<extra></extra>",
                 showlegend=False,
             )
@@ -789,9 +793,21 @@ def create_main_page():
                 </div>
                 
                 <div class="viz-card">
-                    <h2>🗃️ Raw Dataset</h2>
+                    <h2>�️ Dataset Usage</h2>
+                    <p>Analyze dataset and crop usage across all experiments, identify most frequently used datasets, and track data distribution.</p>
+                    <a href="dataset_usage.html" class="btn">View Dataset Stats</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>�🗃️ Raw Dataset</h2>
                     <p>Access the complete experiment metadata in CSV format for custom analysis, including training parameters and performance metrics.</p>
                     <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/data/processed/auto_generated_overview.csv" class="btn btn-secondary" target="_blank">Download CSV</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>📋 Data Usage YAML</h2>
+                    <p>Detailed crop-level dataset usage information in YAML format, showing exact crops used per experiment.</p>
+                    <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/data/processed/data_usage_overview.yaml" class="btn btn-secondary" target="_blank">Download YAML</a>
                 </div>
                 
                 <div class="viz-card">
@@ -833,6 +849,136 @@ def create_main_page():
         f.write(html_content)
 
 
+def create_dataset_usage_stats():
+    """Create dataset usage statistics visualization"""
+    import yaml
+    
+    # Load the dataset usage overview YAML
+    try:
+        with open("data/processed/data_usage_overview.yaml", "r") as f:
+            data_usage = yaml.safe_load(f)
+    except FileNotFoundError:
+        print("⚠️ data_usage_overview.yaml not found. Skipping dataset statistics.")
+        return None
+    
+    if not data_usage:
+        return None
+    
+    # Calculate statistics
+    dataset_counts = {}
+    crop_usage = {}
+    
+    for setup_name, datasets in data_usage.items():
+        for dataset_name, crops in datasets.items():
+            dataset_counts[dataset_name] = dataset_counts.get(dataset_name, 0) + 1
+            for crop in crops:
+                crop_key = f"{dataset_name}/{crop}"
+                crop_usage[crop_key] = crop_usage.get(crop_key, 0) + 1
+    
+    # Create figure with subplots
+    fig = make_subplots(
+        rows=2,
+        cols=2,
+        subplot_titles=(
+            "Dataset Usage Frequency (Top 20)",
+            "Total Crops per Dataset (Top 20)",
+            "Most Reused Crops (Top 20)",
+            "Experiments per Dataset Distribution"
+        ),
+        specs=[
+            [{"type": "bar"}, {"type": "bar"}],
+            [{"type": "bar"}, {"type": "histogram"}]
+        ],
+    )
+    
+    # 1. Dataset usage frequency (how many experiments use each dataset)
+    sorted_datasets = sorted(dataset_counts.items(), key=lambda x: x[1], reverse=True)[:20]
+    dataset_names = [d[0] for d in sorted_datasets]
+    dataset_usage_counts = [d[1] for d in sorted_datasets]
+    
+    fig.add_trace(
+        go.Bar(
+            x=dataset_names,
+            y=dataset_usage_counts,
+            name="Experiment Count",
+            marker_color='#4ECDC4'
+        ),
+        row=1,
+        col=1,
+    )
+    
+    # 2. Total crops per dataset
+    crops_per_dataset = {}
+    for setup_name, datasets in data_usage.items():
+        for dataset_name, crops in datasets.items():
+            if dataset_name not in crops_per_dataset:
+                crops_per_dataset[dataset_name] = set()
+            crops_per_dataset[dataset_name].update(crops)
+    
+    sorted_crop_counts = sorted(
+        [(d, len(c)) for d, c in crops_per_dataset.items()],
+        key=lambda x: x[1],
+        reverse=True
+    )[:20]
+    
+    crop_dataset_names = [d[0] for d in sorted_crop_counts]
+    crop_counts = [d[1] for d in sorted_crop_counts]
+    
+    fig.add_trace(
+        go.Bar(
+            x=crop_dataset_names,
+            y=crop_counts,
+            name="Unique Crops",
+            marker_color='#45B7D1'
+        ),
+        row=1,
+        col=2,
+    )
+    
+    # 3. Most reused crops
+    sorted_crops = sorted(crop_usage.items(), key=lambda x: x[1], reverse=True)[:20]
+    crop_names = [c[0].split('/')[-1] for c in sorted_crops]
+    crop_reuse_counts = [c[1] for c in sorted_crops]
+    
+    fig.add_trace(
+        go.Bar(
+            x=crop_names,
+            y=crop_reuse_counts,
+            name="Reuse Count",
+            marker_color='#FF6B6B'
+        ),
+        row=2,
+        col=1,
+    )
+    
+    # 4. Distribution of experiments per dataset
+    fig.add_trace(
+        go.Histogram(
+            x=list(dataset_counts.values()),
+            nbinsx=20,
+            name="Distribution",
+            marker_color='#96CEB4'
+        ),
+        row=2,
+        col=2,
+    )
+    
+    # Update layout
+    fig.update_xaxes(tickangle=-45, row=1, col=1)
+    fig.update_xaxes(tickangle=-45, row=1, col=2)
+    fig.update_xaxes(tickangle=-45, row=2, col=1)
+    fig.update_xaxes(title_text="Number of Experiments", row=2, col=2)
+    fig.update_yaxes(title_text="Count", row=2, col=2)
+    
+    fig.update_layout(
+        height=1000,
+        title_text="📊 Dataset Usage Statistics Across All Experiments",
+        showlegend=False
+    )
+    
+    return fig
+
+
 if __name__ == "__main__":
     print("🚀 Generating experiment timeline visualizations...")
 
@@ -854,6 +1000,15 @@ if __name__ == "__main__":
     stats_fig = create_summary_stats()
     stats_fig.write_html("output/visualizations/experiment_stats.html")
     print("✅ Statistics saved as 'output/visualizations/experiment_stats.html'")
+    
+    # Generate dataset usage stats
+    dataset_fig = create_dataset_usage_stats()
+    if dataset_fig:
+        dataset_fig.write_html("output/visualizations/dataset_usage.html")
+        print("✅ Dataset usage stats saved as 'output/visualizations/dataset_usage.html'")
+
+    print("\n🎉 All visualizations generated successfully!")
+    print("📁 Output directory: output/visualizations/")
 
     print("\n📈 All visualizations generated successfully!")
     print("🌐 Website ready for GitHub Pages deployment!")

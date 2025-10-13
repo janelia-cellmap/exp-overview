@@ -1,0 +1,5033 @@
+setup_0:
+  jrc_mus-cerebellum-1:
+  - crop994
+  - crop995
+  - crop996
+  - crop997
+  - crop998
+setup_07:
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+setup_08:
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+setup_09:
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+setup_1:
+  jrc_mus-cerebellum-1:
+  - crop994
+  - crop995
+  - crop996
+  - crop997
+  - crop998
+setup_10:
+  jrc_P3_E5_D1:
+  - all_annotated
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+setup_11:
+  jrc_mus-cerebellum-1:
+  - crop994
+  - crop995
+  - crop998
+  jrc_mus-cerebellum-2:
+  - crop1025
+  - crop1053
+  - crop1054
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+  jrc_mus-salivary-1:
+  - crop1000
+  - crop1001
+  - crop1002
+  - crop1003
+  - crop1068
+  - crop552
+  - crop999
+  jrc_mus-salivary-2:
+  - crop1004
+  - crop1005
+  - crop1006
+  - crop1007
+  - crop1069
+  jrc_mus-salivary-3:
+  - crop1008
+  - crop1009
+  - crop1010
+  - crop1011
+  - crop1012
+  - crop1070
+setup_12:
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+setup_13:
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+setup_14:
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+setup_15:
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  - crop994
+  - crop995
+  - crop996
+  - crop997
+  - crop998
+  jrc_mus-cerebellum-2:
+  - crop1024
+  - crop1025
+  - crop1052
+  - crop1053
+  - crop1054
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+  jrc_mus-salivary-1:
+  - crop1000
+  - crop1001
+  - crop1002
+  - crop1003
+  - crop1068
+  - crop508
+  - crop552
+  - crop999
+  jrc_mus-salivary-2:
+  - crop1004
+  - crop1005
+  - crop1006
+  - crop1007
+  - crop1069
+  jrc_mus-salivary-3:
+  - crop1008
+  - crop1009
+  - crop1010
+  - crop1011
+  - crop1012
+  - crop1070
+setup_16:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-dlon-1:
+  - crop1017
+  - crop1018
+  - crop1019
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop238
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop155
+  - crop16
+  - crop18
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop100
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  - crop994
+  - crop995
+  - crop996
+  - crop997
+  - crop998
+  jrc_mus-cerebellum-2:
+  - crop1024
+  - crop1025
+  - crop1052
+  - crop1053
+  - crop1054
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+  jrc_mus-kidney:
+  - crop1028
+  - crop1029
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  - crop184
+  - crop221
+  - crop229
+  - crop230
+  - crop231
+  jrc_mus-liver:
+  - crop1038
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop177
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+  jrc_mus-salivary-1:
+  - crop1000
+  - crop1001
+  - crop1002
+  - crop1003
+  - crop1068
+  - crop508
+  - crop552
+  - crop999
+  jrc_mus-salivary-2:
+  - crop1004
+  - crop1005
+  - crop1006
+  - crop1007
+  - crop1069
+  jrc_mus-salivary-3:
+  - crop1008
+  - crop1009
+  - crop1010
+  - crop1011
+  - crop1012
+  - crop1070
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop211
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_17:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-dlon-1:
+  - crop1017
+  - crop1018
+  - crop1019
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop238
+  - crop240
+  - crop241
+  - crop242
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop113
+  - crop155
+  - crop16
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop100
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  - crop994
+  - crop995
+  - crop996
+  - crop997
+  - crop998
+  jrc_mus-cerebellum-2:
+  - crop1024
+  - crop1025
+  - crop1052
+  - crop1053
+  - crop1054
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+  jrc_mus-kidney:
+  - crop1028
+  - crop1029
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  - crop184
+  - crop221
+  - crop229
+  - crop230
+  - crop231
+  jrc_mus-liver:
+  - crop1038
+  - crop124
+  - crop125
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop172
+  - crop175
+  - crop177
+  - crop183
+  - crop417
+  - crop547
+  - crop549
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop345
+  - crop346
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop355
+  - crop356
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+  jrc_mus-salivary-1:
+  - crop1000
+  - crop1001
+  - crop1002
+  - crop1003
+  - crop1068
+  - crop508
+  - crop552
+  - crop999
+  jrc_mus-salivary-2:
+  - crop1004
+  - crop1005
+  - crop1006
+  - crop1007
+  - crop1069
+  jrc_mus-salivary-3:
+  - crop1008
+  - crop1009
+  - crop1010
+  - crop1011
+  - crop1012
+  - crop1070
+  jrc_sum159-1:
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop211
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+  jrc_zf-cardiac-1:
+  - crop380
+  - crop381
+setup_18:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-dlon-1:
+  - crop1017
+  - crop1018
+  - crop1019
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+setup_19:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-dlon-1:
+  - crop1017
+  - crop1018
+  - crop1019
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+setup_2:
+  jrc_mus-cerebellum-2:
+  - crop1024
+  - crop1025
+  - crop1052
+setup_20:
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop518
+  - crop519
+  - crop540
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop14
+  - crop15
+  - crop155
+  - crop16
+  - crop18
+  - crop19
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop9
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cortex-3:
+  - crop1033
+  - crop1034
+  - crop1035
+  - crop1036
+  - crop1037
+  - crop1045
+  - crop1046
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1028
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop508
+  - crop552
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_21:
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop518
+  - crop519
+  - crop540
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop155
+  - crop16
+  - crop18
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-cortex-3:
+  - crop1033
+  - crop1034
+  - crop1035
+  - crop1036
+  - crop1037
+  - crop1045
+  - crop1046
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1028
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  - crop552
+  jrc_mus-salivary-2:
+  - crop1005
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_22:
+  jrc_22ak351-leaf-2lb:
+  - inference
+  jrc_22ak351-leaf-3mb:
+  - inference
+  jrc_22ak351-leaf-3rb:
+  - inference
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop518
+  - crop519
+  - crop540
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  - inference
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop240
+  - crop241
+  - crop242
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop113
+  - crop155
+  - crop16
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-cortex-3:
+  - crop1033
+  - crop1034
+  - crop1035
+  - crop1036
+  - crop1037
+  - crop1045
+  - crop1046
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1028
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop172
+  - crop175
+  - crop183
+  - crop417
+  - crop547
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  - crop552
+  jrc_mus-salivary-2:
+  - crop1005
+  jrc_sum159-1:
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_23:
+  jrc_22ak351-leaf-2lb:
+  - inference
+  jrc_22ak351-leaf-3mb:
+  - inference
+  jrc_22ak351-leaf-3rb:
+  - inference
+  jrc_atla24-b9-2:
+  - crop1021
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop519
+  - crop540
+  - crop550
+  - inference
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - inference
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_fly-vnc-1:
+  - crop78
+  jrc_hela-2:
+  - crop155
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop141
+  - crop156
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop145
+  - crop172
+  - crop175
+  - crop417
+  - crop547
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  - crop552
+  jrc_mus-salivary-2:
+  - crop1005
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_24:
+  jrc_22ak351-leaf-2lb:
+  - inference
+  jrc_22ak351-leaf-3mb:
+  - inference
+  jrc_22ak351-leaf-3r:
+  - inference
+  jrc_22ak351-leaf-3rb:
+  - inference
+  jrc_atla24-b9-2:
+  - crop1021
+  jrc_c-elegans-bw-1:
+  - crop540
+  - crop550
+  - inference
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - inference
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-kidney:
+  - crop129
+  - crop156
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  jrc_mus-salivary-2:
+  - crop1005
+setup_25:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+setup_26:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+setup_27:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+setup_28:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+setup_29:
+  jrc_c-elegans-bw-1:
+  - crop518
+  jrc_c-elegans-comma-1:
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+setup_3:
+  jrc_mus-cerebellum-2:
+  - crop1024
+  - crop1025
+  - crop1052
+setup_31:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop527
+  - crop538
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop542
+  - crop543
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1078
+  - crop1080
+setup_32:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop527
+  - crop538
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop542
+  - crop543
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1078
+  - crop1080
+setup_33:
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop518
+  - crop519
+  - crop540
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop14
+  - crop15
+  - crop155
+  - crop16
+  - crop18
+  - crop19
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop9
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cortex-3:
+  - crop1033
+  - crop1034
+  - crop1035
+  - crop1036
+  - crop1037
+  - crop1045
+  - crop1046
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1028
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop508
+  - crop552
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_35:
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop518
+  - crop519
+  - crop540
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop14
+  - crop15
+  - crop155
+  - crop16
+  - crop18
+  - crop19
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop9
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cortex-3:
+  - crop1033
+  - crop1034
+  - crop1035
+  - crop1036
+  - crop1037
+  - crop1045
+  - crop1046
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1028
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop508
+  - crop552
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_36:
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop518
+  - crop519
+  - crop540
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop155
+  - crop16
+  - crop18
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-cortex-3:
+  - crop1033
+  - crop1034
+  - crop1035
+  - crop1036
+  - crop1037
+  - crop1045
+  - crop1046
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1028
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  - crop552
+  jrc_mus-salivary-2:
+  - crop1005
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_37:
+  jrc_22ak351-leaf-2lb:
+  - inference
+  jrc_22ak351-leaf-3mb:
+  - inference
+  jrc_22ak351-leaf-3rb:
+  - inference
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop518
+  - crop519
+  - crop540
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - crop520
+  - inference
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop240
+  - crop241
+  - crop242
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop113
+  - crop155
+  - crop16
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-cortex-3:
+  - crop1033
+  - crop1034
+  - crop1035
+  - crop1036
+  - crop1037
+  - crop1045
+  - crop1046
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1028
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop172
+  - crop175
+  - crop183
+  - crop417
+  - crop547
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  - crop552
+  jrc_mus-salivary-2:
+  - crop1005
+  jrc_sum159-1:
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_38:
+  jrc_22ak351-leaf-2lb:
+  - inference
+  jrc_22ak351-leaf-3mb:
+  - inference
+  jrc_22ak351-leaf-3rb:
+  - inference
+  jrc_atla24-b9-2:
+  - crop1021
+  jrc_c-elegans-P3_E5_D1_N2:
+  - crop1047
+  - crop1048
+  - crop1049
+  - crop1050
+  - crop1051
+  jrc_c-elegans-bw-1:
+  - crop519
+  - crop540
+  - crop550
+  - inference
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - inference
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_fly-vnc-1:
+  - crop78
+  jrc_hela-2:
+  - crop155
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-kidney:
+  - crop1026
+  - crop1027
+  - crop1029
+  - crop1030
+  - crop1031
+  - crop1032
+  - crop129
+  - crop141
+  - crop156
+  jrc_mus-liver:
+  - crop1038
+  - crop1039
+  - crop1040
+  - crop1041
+  - crop1042
+  - crop1043
+  - crop1044
+  - crop124
+  - crop125
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop145
+  - crop172
+  - crop175
+  - crop417
+  - crop547
+  - crop549
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  - crop552
+  jrc_mus-salivary-2:
+  - crop1005
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_39:
+  jrc_22ak351-leaf-2lb:
+  - inference
+  jrc_22ak351-leaf-3mb:
+  - inference
+  jrc_22ak351-leaf-3r:
+  - inference
+  jrc_22ak351-leaf-3rb:
+  - inference
+  jrc_atla24-b9-2:
+  - crop1021
+  jrc_c-elegans-bw-1:
+  - crop540
+  - crop550
+  - inference
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop1064
+  - crop1065
+  - crop1066
+  - crop1067
+  - crop498
+  - crop510
+  - crop514
+  - crop515
+  - crop516
+  jrc_c-elegans-op50-1:
+  - inference
+  jrc_celegans-20250414:
+  - crop1086
+  - crop1087
+  - crop1088
+  - crop1089
+  - crop1090
+  jrc_celegans_bw25113:
+  - crop1076
+  - crop1077
+  - crop1078
+  - crop1079
+  - crop1080
+  jrc_mus-cerebellum-3:
+  - crop1055
+  jrc_mus-kidney:
+  - crop129
+  - crop156
+  jrc_mus-liver-6:
+  - inference
+  jrc_mus-liver-7:
+  - inference
+  jrc_mus-pancreas-5:
+  - crop992
+  jrc_mus-salivary-1:
+  - crop1002
+  - crop508
+  jrc_mus-salivary-2:
+  - crop1005
+setup_4:
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+setup_40:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-dlon-1:
+  - crop1017
+  - crop1018
+  - crop1019
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop238
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop14
+  - crop15
+  - crop155
+  - crop16
+  - crop18
+  - crop19
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop9
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop100
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  jrc_mus-kidney:
+  - crop1028
+  - crop1029
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  - crop229
+  jrc_mus-liver:
+  - crop1038
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-6:
+  - crop1058
+  jrc_mus-salivary-1:
+  - crop508
+  - crop552
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop211
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_41:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-dlon-1:
+  - crop1017
+  - crop1018
+  - crop1019
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+  jrc_cos7-1a:
+  - crop234
+  - crop236
+  - crop237
+  - crop239
+  - crop243
+  - crop248
+  - crop252
+  - crop254
+  - crop256
+  - crop292
+  jrc_cos7-1b:
+  - crop235
+  - crop238
+  - crop240
+  - crop241
+  - crop242
+  - crop245
+  - crop249
+  - crop255
+  - crop258
+  - crop259
+  - crop291
+  jrc_ctl-id8-1:
+  - crop116
+  - crop117
+  - crop118
+  - crop119
+  - crop130
+  jrc_fly-mb-1a:
+  - crop120
+  - crop121
+  - crop122
+  - crop123
+  - crop134
+  - crop178
+  jrc_fly-vnc-1:
+  - crop173
+  - crop174
+  - crop176
+  - crop185
+  - crop78
+  - crop79
+  jrc_hela-2:
+  - crop1
+  - crop113
+  - crop13
+  - crop155
+  - crop16
+  - crop18
+  - crop23
+  - crop28
+  - crop3
+  - crop4
+  - crop54
+  - crop55
+  - crop56
+  - crop57
+  - crop58
+  - crop59
+  - crop6
+  - crop7
+  - crop8
+  - crop94
+  - crop95
+  - crop96
+  jrc_hela-3:
+  - crop100
+  - crop101
+  - crop111
+  - crop181
+  - crop27
+  - crop33
+  - crop34
+  - crop50
+  - crop51
+  - crop60
+  - crop61
+  - crop62
+  - crop63
+  - crop64
+  - crop65
+  - crop85
+  - crop86
+  - crop87
+  jrc_jurkat-1:
+  - crop107
+  - crop112
+  - crop126
+  - crop180
+  - crop182
+  - crop35
+  - crop36
+  - crop37
+  - crop38
+  - crop43
+  - crop47
+  - crop66
+  - crop67
+  - crop68
+  - crop69
+  - crop70
+  - crop71
+  - crop91
+  - crop92
+  - crop93
+  jrc_macrophage-2:
+  - crop109
+  - crop110
+  - crop31
+  - crop32
+  - crop39
+  - crop40
+  - crop42
+  - crop48
+  - crop49
+  - crop72
+  - crop73
+  - crop74
+  - crop75
+  - crop76
+  - crop77
+  - crop88
+  - crop89
+  - crop90
+  jrc_mus-cerebellum-1:
+  - crop522
+  - crop523
+  - crop524
+  - crop994
+  - crop995
+  - crop996
+  - crop997
+  - crop998
+  jrc_mus-cerebellum-2:
+  - crop1024
+  - crop1025
+  - crop1052
+  - crop1053
+  - crop1054
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+  jrc_mus-kidney:
+  - crop1028
+  - crop1029
+  - crop129
+  - crop140
+  - crop141
+  - crop146
+  - crop147
+  - crop148
+  - crop149
+  - crop156
+  - crop158
+  - crop159
+  - crop160
+  - crop161
+  - crop162
+  - crop163
+  - crop164
+  - crop165
+  - crop166
+  - crop184
+  - crop221
+  - crop229
+  - crop230
+  - crop231
+  jrc_mus-liver:
+  - crop1038
+  - crop124
+  - crop125
+  - crop131
+  - crop132
+  - crop133
+  - crop135
+  - crop136
+  - crop137
+  - crop138
+  - crop139
+  - crop142
+  - crop143
+  - crop144
+  - crop145
+  - crop150
+  - crop151
+  - crop157
+  - crop171
+  - crop172
+  - crop175
+  - crop177
+  - crop183
+  - crop416
+  - crop417
+  - crop546
+  - crop547
+  - crop548
+  - crop549
+  jrc_mus-liver-zon-1:
+  - crop266
+  - crop267
+  - crop268
+  - crop269
+  - crop270
+  - crop272
+  - crop273
+  - crop274
+  - crop275
+  - crop276
+  - crop277
+  - crop278
+  - crop279
+  - crop280
+  - crop298
+  - crop313
+  - crop319
+  - crop320
+  - crop321
+  - crop322
+  - crop323
+  - crop325
+  - crop326
+  - crop377
+  jrc_mus-liver-zon-2:
+  - crop333
+  - crop340
+  - crop341
+  - crop342
+  - crop368
+  - crop369
+  - crop370
+  - crop376
+  jrc_mus-nacc-1:
+  - crop115
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  - crop992
+  - crop993
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  - crop991
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+  jrc_mus-salivary-1:
+  - crop1000
+  - crop1001
+  - crop1002
+  - crop1003
+  - crop1068
+  - crop508
+  - crop552
+  - crop999
+  jrc_mus-salivary-2:
+  - crop1004
+  - crop1005
+  - crop1006
+  - crop1007
+  - crop1069
+  jrc_mus-salivary-3:
+  - crop1008
+  - crop1009
+  - crop1010
+  - crop1011
+  - crop1012
+  - crop1070
+  jrc_sum159-1:
+  - crop20
+  - crop22
+  - crop25
+  - crop26
+  - crop80
+  - crop81
+  - crop82
+  - crop83
+  - crop84
+  - crop97
+  - crop98
+  - crop99
+  jrc_sum159-4:
+  - crop186
+  - crop187
+  - crop188
+  - crop189
+  - crop201
+  - crop202
+  - crop203
+  - crop206
+  - crop208
+  - crop209
+  - crop210
+  - crop211
+  - crop212
+  - crop213
+  - crop216
+  - crop217
+  - crop218
+  - crop219
+  jrc_ut21-1413-003:
+  - crop190
+  - crop191
+  - crop192
+  - crop193
+  - crop195
+  - crop196
+  - crop197
+  - crop198
+  - crop199
+  - crop200
+  - crop214
+  - crop220
+  - crop222
+  - crop224
+  - crop225
+  - crop226
+  - crop227
+  - crop228
+setup_42:
+  jrc_c-elegans-bw-1:
+  - crop495
+  - crop518
+  - crop519
+  - crop526
+  - crop527
+  - crop536
+  - crop537
+  - crop538
+  - crop540
+  - crop541
+  - crop550
+  jrc_c-elegans-comma-1:
+  - crop1063
+  - crop496
+  - crop497
+  - crop498
+  - crop510
+  - crop512
+  - crop513
+  - crop514
+  - crop515
+  - crop516
+  - crop534
+  - crop545
+  - crop553
+  - crop554
+  - crop555
+  jrc_c-elegans-dlon-1:
+  - crop1017
+  - crop1018
+  - crop1019
+  jrc_c-elegans-op50-1:
+  - crop520
+  - crop521
+  - crop528
+  - crop532
+  - crop533
+  - crop535
+  - crop539
+  - crop542
+  - crop543
+  - crop544
+  - crop556
+  jrc_celegans-20250414:
+  - crop1091
+  - crop1092
+  - crop1094
+  - crop1095
+  jrc_celegans_bw25113:
+  - crop1081
+  - crop1082
+  - crop1083
+  - crop1084
+  - crop1085
+setup_5:
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+setup_6:
+  jrc_P3_E5_D1:
+  - all_annotated
+  jrc_mus-cerebellum-1:
+  - crop994
+  - crop995
+  - crop998
+  jrc_mus-cerebellum-2:
+  - crop1025
+  - crop1053
+  - crop1054
+  jrc_mus-cerebellum-3:
+  - crop1055
+  - crop1056
+  - crop1057
+  jrc_mus-pancreas-4:
+  - crop1013
+  - crop1060
+  jrc_mus-pancreas-5:
+  - crop1014
+  jrc_mus-pancreas-6:
+  - crop1015
+  - crop1016
+  - crop1058
+  - crop1059
+  - crop990
+  jrc_mus-pancreas-7:
+  - crop1061
+  - crop1062
+  jrc_mus-salivary-1:
+  - crop1000
+  - crop1001
+  - crop1002
+  - crop1003
+  - crop1068
+  - crop552
+  - crop999
+  jrc_mus-salivary-2:
+  - crop1004
+  - crop1005
+  - crop1006
+  - crop1007
+  - crop1069
+  jrc_mus-salivary-3:
+  - crop1008
+  - crop1009
+  - crop1010
+  - crop1011
+  - crop1012
+  - crop1070
