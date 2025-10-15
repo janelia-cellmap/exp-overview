@@ -261,7 +261,6 @@ setup_16:
   - crop541
   - crop550
   jrc_c-elegans-comma-1:
-  - crop1063
   - crop496
   - crop497
   - crop498
@@ -642,7 +641,6 @@ setup_17:
   - crop541
   - crop550
   jrc_c-elegans-comma-1:
-  - crop1063
   - crop496
   - crop497
   - crop498
@@ -1017,7 +1015,6 @@ setup_18:
   - crop541
   - crop550
   jrc_c-elegans-comma-1:
-  - crop1063
   - crop496
   - crop497
   - crop498
@@ -1073,7 +1070,6 @@ setup_19:
   - crop541
   - crop550
   jrc_c-elegans-comma-1:
-  - crop1063
   - crop496
   - crop497
   - crop498
@@ -4099,7 +4095,6 @@ setup_40:
   - crop541
   - crop550
   jrc_c-elegans-comma-1:
-  - crop1063
   - crop496
   - crop497
   - crop498
@@ -4430,7 +4425,6 @@ setup_41:
   - crop541
   - crop550
   jrc_c-elegans-comma-1:
-  - crop1063
   - crop496
   - crop497
   - crop498
@@ -4811,7 +4805,6 @@ setup_42:
   - crop541
   - crop550
   jrc_c-elegans-comma-1:
-  - crop1063
   - crop496
   - crop497
   - crop498
