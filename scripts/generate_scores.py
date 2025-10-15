@@ -356,27 +356,48 @@ def create_iteration_progression(df):
         fig = go.Figure()
 
         for idx, setup in enumerate(setups):
-            setup_data = org_data[org_data["setup"] == setup].sort_values("iteration")
-            exp_group = setup_data["experiment_group"].iloc[0]
-            color = color_palette[idx % len(color_palette)]
+            setup_data = org_data[org_data["setup"] == setup].copy()
 
-            fig.add_trace(
-                go.Scatter(
-                    x=setup_data["iteration"],
-                    y=setup_data["f1"],
-                    mode="lines+markers",
-                    name=f"{setup}",
-                    marker=dict(
-                        size=10, color=color, line=dict(width=1, color="white")
-                    ),
-                    line=dict(width=3, color=color),
-                    hovertemplate="<b>%{fullData.name}</b><br>"
-                    + "Iteration: %{x:,}<br>"
-                    + "F1 Score: %{y:.4f}<br>"
-                    + f"Group: {exp_group}<br>"
-                    + "<extra></extra>",
-                )
+            # Create a unique identifier for each dataset/crop combination
+            setup_data["dataset_crop"] = (
+                setup_data["dataset"] + "/" + setup_data["crop"]
             )
+
+            exp_group = setup_data["experiment_group"].iloc[0]
+            base_color = color_palette[idx % len(color_palette)]
+
+            # Plot each dataset/crop combination as a separate line
+            # This way lines connect horizontally (same dataset across iterations)
+            # Not vertically (different datasets at same iteration)
+            for dataset_crop in setup_data["dataset_crop"].unique():
+                dc_data = setup_data[
+                    setup_data["dataset_crop"] == dataset_crop
+                ].sort_values("iteration")
+
+                # Only show in legend once per setup (not for every dataset/crop)
+                show_legend = dataset_crop == setup_data["dataset_crop"].unique()[0]
+
+                fig.add_trace(
+                    go.Scatter(
+                        x=dc_data["iteration"],
+                        y=dc_data["f1"],
+                        mode="lines+markers",
+                        name=f"{setup}",
+                        legendgroup=setup,  # Group all traces for this setup
+                        showlegend=show_legend,  # Only show setup name once in legend
+                        marker=dict(
+                            size=8, color=base_color, line=dict(width=1, color="white")
+                        ),
+                        line=dict(width=2, color=base_color, dash="solid"),
+                        opacity=0.7,
+                        hovertemplate="<b>%{fullData.legendgroup}</b><br>"
+                        + f"Dataset/Crop: {dataset_crop}<br>"
+                        + "Iteration: %{x:,}<br>"
+                        + "F1 Score: %{y:.4f}<br>"
+                        + f"Group: {exp_group}<br>"
+                        + "<extra></extra>",
+                    )
+                )
 
         fig.update_layout(
             title=dict(
