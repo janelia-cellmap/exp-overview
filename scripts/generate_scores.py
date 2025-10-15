@@ -78,90 +78,78 @@ def collect_scores_from_runs():
 
 def create_organelle_comparison_charts(df):
     """
-    Create interactive charts showing F1 scores grouped by organelle
+    Create simple, clear bar charts showing F1 scores for each organelle
+    One chart per organelle, sorted by F1 score
     """
-
-    # Get unique organelles
     organelles = sorted(df["organelle"].unique())
-
-    # Create a subplot for each organelle
-    num_organelles = len(organelles)
-    rows = (num_organelles + 1) // 2  # 2 columns
-
-    fig = make_subplots(
-        rows=rows,
-        cols=2,
-        subplot_titles=[f"{org.upper()}" for org in organelles],
-        vertical_spacing=0.12,
-        horizontal_spacing=0.1,
-    )
-
-    # Color palette for different experiment groups
-    color_map = {
-        "exp_mito": "#FF6B6B",
-        "exp_pancreas": "#4ECDC4",
-        "exp_cell": "#45B7D1",
-        "exp_cerebellum": "#96CEB4",
-        "exp_salivary": "#A78BFA",
-        "exp_c-elegen": "#FECA57",
-        "exp_c-elegen_v2": "#FECA57",
-        "exp_c-elegen_v3": "#FF9FF3",
-        "exp_c-elegen_v4": "#54A0FF",
-    }
-
-    for idx, organelle in enumerate(organelles):
-        row = (idx // 2) + 1
-        col = (idx % 2) + 1
-
-        # Filter data for this organelle
+    
+    # Create one figure per organelle for clarity
+    figs = []
+    
+    for organelle in organelles:
         org_data = df[df["organelle"] == organelle].copy()
-        org_data = org_data.sort_values("f1", ascending=False)
-
-        # Create hover text with iteration info
-        org_data["hover_text"] = org_data.apply(
-            lambda x: f"<b>{x['setup']}</b><br>"
-            f"Group: {x['experiment_group']}<br>"
-            f"Iteration: {x['iteration'] if pd.notna(x['iteration']) else 'N/A'}<br>"
-            f"Dataset: {x['dataset']}<br>"
-            f"Crop: {x['crop']}<br>"
-            f"F1: {x['f1']:.4f}<br>"
-            f"Accuracy: {x['accuracy']:.4f}<br>"
-            f"Val Loss: {x['val_loss']:.4f}<br>"
-            f"Checkpoint: {x['checkpoint']}",
-            axis=1,
+        
+        # Get best score per setup (in case multiple iterations exist)
+        best_per_setup = org_data.loc[org_data.groupby('setup')['f1'].idxmax()]
+        best_per_setup = best_per_setup.sort_values('f1', ascending=True)  # Ascending for horizontal bar
+        
+        # Create setup label with iteration
+        best_per_setup['setup_label'] = best_per_setup.apply(
+            lambda x: f"{x['setup']} (iter {int(x['iteration']) if pd.notna(x['iteration']) else 'N/A'})",
+            axis=1
         )
-
-        # Add bars for each experiment group
-        for exp_group in org_data["experiment_group"].unique():
-            group_data = org_data[org_data["experiment_group"] == exp_group]
-
-            fig.add_trace(
-                go.Bar(
-                    x=group_data["setup"],
-                    y=group_data["f1"],
-                    name=exp_group.replace("exp_", ""),
-                    marker_color=color_map.get(exp_group, "#95A5A6"),
-                    hovertext=group_data["hover_text"],
-                    hoverinfo="text",
-                    showlegend=(idx == 0),  # Only show legend for first subplot
-                ),
-                row=row,
-                col=col,
-            )
-
-        # Update axes
-        fig.update_xaxes(title_text="Setup", tickangle=-45, row=row, col=col)
-        fig.update_yaxes(title_text="F1 Score", row=row, col=col)
-
-    fig.update_layout(
-        height=400 * rows,
-        title_text="🎯 Model Performance by Organelle (F1 Score)<br><sub>Comparison across all experiments and setups</sub>",
-        showlegend=True,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        hovermode="closest",
-    )
-
-    return fig
+        
+        # Color by experiment group
+        color_map = {
+            "exp_mito": "#FF6B6B",
+            "exp_pancreas": "#4ECDC4",
+            "exp_cell": "#45B7D1",
+            "exp_cerebellum": "#96CEB4",
+            "exp_salivary": "#A78BFA",
+            "exp_c-elegen": "#FECA57",
+        }
+        
+        colors = [color_map.get(g, "#95A5A6") for g in best_per_setup['experiment_group']]
+        
+        fig = go.Figure()
+        
+        fig.add_trace(go.Bar(
+            y=best_per_setup['setup_label'],
+            x=best_per_setup['f1'],
+            orientation='h',
+            marker=dict(
+                color=colors,
+                line=dict(color='white', width=1)
+            ),
+            text=best_per_setup['f1'].round(4),
+            textposition='outside',
+            hovertemplate='<b>%{y}</b><br>' +
+                         'F1 Score: %{x:.4f}<br>' +
+                         'Accuracy: %{customdata[0]:.4f}<br>' +
+                         'Val Loss: %{customdata[1]:.4f}<br>' +
+                         'Dataset: %{customdata[2]}<br>' +
+                         'Group: %{customdata[3]}<br>' +
+                         '<extra></extra>',
+            customdata=best_per_setup[['accuracy', 'val_loss', 'dataset', 'experiment_group']].values
+        ))
+        
+        fig.update_layout(
+            title=dict(
+                text=f"<b>{organelle.upper()}</b> - F1 Scores by Setup<br><sub>Showing best iteration for each setup</sub>",
+                font=dict(size=20)
+            ),
+            xaxis_title="F1 Score",
+            yaxis_title="Setup (Iteration)",
+            height=max(400, len(best_per_setup) * 35 + 150),
+            margin=dict(l=200, r=100, t=100, b=80),
+            template="plotly_white",
+            xaxis=dict(range=[0, 1.0]),
+            font=dict(size=12)
+        )
+        
+        figs.append((organelle, fig))
+    
+    return figs
 
 
 def create_best_scores_table(df):
@@ -394,6 +382,133 @@ def create_iteration_progression(df):
     return fig
 
 
+def create_scores_summary_page(df):
+    """
+    Create a simple summary page with links to individual organelle pages
+    """
+    organelles = sorted(df['organelle'].unique())
+    
+    # Get best F1 for each organelle
+    best_scores = df.loc[df.groupby('organelle')['f1'].idxmax()]
+    
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Scores by Organelle</title>
+    <style>
+        body {{
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }}
+        h1 {{
+            color: #1a365d;
+            border-bottom: 3px solid #2b6cb0;
+            padding-bottom: 10px;
+        }}
+        .organelle-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }}
+        .organelle-card {{
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            border-left: 4px solid #2b6cb0;
+        }}
+        .organelle-card:hover {{
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }}
+        .organelle-name {{
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }}
+        .stats {{
+            margin: 10px 0;
+            color: #4a5568;
+            line-height: 1.8;
+        }}
+        .stat-label {{
+            font-weight: 500;
+            color: #2d3748;
+        }}
+        .best-f1 {{
+            font-size: 32px;
+            font-weight: 700;
+            color: #2b6cb0;
+            margin: 15px 0;
+        }}
+        .view-btn {{
+            display: inline-block;
+            background: #2b6cb0;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }}
+        .view-btn:hover {{
+            background: #2c5282;
+        }}
+        .summary {{
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }}
+    </style>
+</head>
+<body>
+    <h1>🎯 Model Performance by Organelle</h1>
+    
+    <div class="summary">
+        <p><strong>Total Evaluations:</strong> {len(df)}</p>
+        <p><strong>Unique Setups:</strong> {df['setup'].nunique()}</p>
+        <p><strong>Organelles Tested:</strong> {', '.join(organelles)}</p>
+    </div>
+    
+    <div class="organelle-grid">
+"""
+    
+    for organelle in organelles:
+        org_data = df[df['organelle'] == organelle]
+        best = best_scores[best_scores['organelle'] == organelle].iloc[0]
+        
+        html += f"""
+        <div class="organelle-card">
+            <div class="organelle-name">{organelle}</div>
+            <div class="best-f1">{best['f1']:.4f}</div>
+            <div class="stats">
+                <div><span class="stat-label">Best Setup:</span> {best['setup']}</div>
+                <div><span class="stat-label">Iteration:</span> {int(best['iteration']) if pd.notna(best['iteration']) else 'N/A'}</div>
+                <div><span class="stat-label">Total Evaluations:</span> {len(org_data)}</div>
+                <div><span class="stat-label">Setups Tested:</span> {org_data['setup'].nunique()}</div>
+            </div>
+            <a href="scores_{organelle}.html" class="view-btn">View Detailed Results →</a>
+        </div>
+"""
+    
+    html += """
+    </div>
+</body>
+</html>
+"""
+    
+    return html
+
+
 def create_scores_summary_stats(df):
     """
     Create summary statistics
@@ -429,41 +544,34 @@ def main():
 
     print("\n📊 Generating visualizations...")
 
-    # Create organelle comparison charts
-    organelle_fig = create_organelle_comparison_charts(df)
-    organelle_fig.write_html("output/visualizations/scores_by_organelle.html")
-    print(
-        "✅ Organelle comparison saved to 'output/visualizations/scores_by_organelle.html'"
-    )
+    # Create organelle comparison charts (one per organelle)
+    organelle_figs = create_organelle_comparison_charts(df)
+    for organelle, fig in organelle_figs:
+        filename = f"output/visualizations/scores_{organelle}.html"
+        fig.write_html(filename)
+        print(f"✅ {organelle.upper()} scores saved to '{filename}'")
+    
+    # Create summary page with links to all organelles
+    summary_html = create_scores_summary_page(df)
+    with open("output/visualizations/scores_by_organelle.html", "w") as f:
+        f.write(summary_html)
+    print("✅ Scores summary page saved to 'output/visualizations/scores_by_organelle.html'")
 
     # Create best scores table
     best_scores_fig = create_best_scores_table(df)
     best_scores_fig.write_html("output/visualizations/best_scores.html")
     print("✅ Best scores table saved to 'output/visualizations/best_scores.html'")
 
-    # Create metrics scatter
-    metrics_fig = create_metrics_scatter(df)
-    metrics_fig.write_html("output/visualizations/metrics_correlation.html")
-    print(
-        "✅ Metrics correlation saved to 'output/visualizations/metrics_correlation.html'"
-    )
-
-    # Create experiment group comparison
-    group_fig = create_experiment_group_comparison(df)
-    group_fig.write_html("output/visualizations/group_comparison.html")
-    print("✅ Group comparison saved to 'output/visualizations/group_comparison.html'")
-
-    # Create iteration progression chart
+    # Create iteration progression chart (if multiple iterations exist)
     iteration_fig = create_iteration_progression(df)
     if iteration_fig:
         iteration_fig.write_html("output/visualizations/iteration_progression.html")
-        print(
-            "✅ Iteration progression saved to 'output/visualizations/iteration_progression.html'"
-        )
+        print("✅ Iteration progression saved to 'output/visualizations/iteration_progression.html'")
     else:
-        print("⚠️ No iteration data available for progression chart")
+        print("⚠️  No iteration progression data (need multiple checkpoints per setup)")
 
     print("\n🎉 All score visualizations generated successfully!")
+    print("📁 Main page: output/visualizations/scores_by_organelle.html")
 
     return stats
 

@@ -838,31 +838,19 @@ def create_main_page():
                 
                 <div class="viz-card">
                     <h2>🎯 Model Scores by Organelle</h2>
-                    <p>Interactive visualizations of F1 scores, accuracy, and validation loss grouped by organelle type across all experiments.</p>
+                    <p>Clear, easy-to-read bar charts showing F1 scores for each organelle. Separate pages for each organelle type with detailed rankings.</p>
                     <a href="scores_by_organelle.html" class="btn">View Scores</a>
                 </div>
                 
                 <div class="viz-card">
                     <h2>🏆 Best Performing Models</h2>
-                    <p>Table showing the best F1 scores achieved for each organelle type with detailed metrics and model configurations.</p>
+                    <p>Quick reference table showing the top F1 score achieved for each organelle with setup and iteration information.</p>
                     <a href="best_scores.html" class="btn">View Best Scores</a>
                 </div>
                 
                 <div class="viz-card">
-                    <h2>📊 Metrics Correlation</h2>
-                    <p>Scatter plots analyzing the relationship between F1 score, accuracy, and validation loss across all evaluations.</p>
-                    <a href="metrics_correlation.html" class="btn">View Correlations</a>
-                </div>
-                
-                <div class="viz-card">
-                    <h2>📦 Group Performance Comparison</h2>
-                    <p>Box plots comparing F1 score distributions across different experiment groups to identify trends and outliers.</p>
-                    <a href="group_comparison.html" class="btn">View Comparison</a>
-                </div>
-                
-                <div class="viz-card">
-                    <h2>📈 Training Iteration Progression</h2>
-                    <p>Line charts showing how model F1 scores improve over training iterations for each setup and organelle.</p>
+                    <h2>� Training Progression</h2>
+                    <p>Track how F1 scores improve across training iterations. See which setups learn faster and when performance plateaus.</p>
                     <a href="iteration_progression.html" class="btn">View Progression</a>
                 </div>
                 
