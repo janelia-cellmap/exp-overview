@@ -861,6 +861,12 @@ def create_main_page():
                 </div>
                 
                 <div class="viz-card">
+                    <h2>📈 Training Iteration Progression</h2>
+                    <p>Line charts showing how model F1 scores improve over training iterations for each setup and organelle.</p>
+                    <a href="iteration_progression.html" class="btn">View Progression</a>
+                </div>
+                
+                <div class="viz-card">
                     <h2>�🗃️ Raw Dataset</h2>
                     <p>Access the complete experiment metadata in CSV format for custom analysis, including training parameters and performance metrics.</p>
                     <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/data/processed/auto_generated_overview.csv" class="btn btn-secondary" target="_blank">Download CSV</a>

@@ -44,6 +44,14 @@ def collect_scores_from_runs():
 
             # Process the nested structure
             for checkpoint, checkpoint_data in scores_data.items():
+                # Extract iteration number from checkpoint name (e.g., model_checkpoint_10000 -> 10000)
+                iteration = None
+                if "checkpoint_" in checkpoint:
+                    try:
+                        iteration = int(checkpoint.split("_")[-1])
+                    except:
+                        iteration = None
+
                 for dataset, dataset_data in checkpoint_data.items():
                     for crop, crop_data in dataset_data.items():
                         for organelle, metrics in crop_data.items():
@@ -51,6 +59,7 @@ def collect_scores_from_runs():
                                 "experiment_group": exp_group,
                                 "setup": setup_name,
                                 "checkpoint": checkpoint,
+                                "iteration": iteration,
                                 "dataset": dataset,
                                 "crop": crop,
                                 "organelle": organelle,
@@ -108,10 +117,11 @@ def create_organelle_comparison_charts(df):
         org_data = df[df["organelle"] == organelle].copy()
         org_data = org_data.sort_values("f1", ascending=False)
 
-        # Create hover text
+        # Create hover text with iteration info
         org_data["hover_text"] = org_data.apply(
             lambda x: f"<b>{x['setup']}</b><br>"
             f"Group: {x['experiment_group']}<br>"
+            f"Iteration: {x['iteration'] if pd.notna(x['iteration']) else 'N/A'}<br>"
             f"Dataset: {x['dataset']}<br>"
             f"Crop: {x['crop']}<br>"
             f"F1: {x['f1']:.4f}<br>"
@@ -172,6 +182,7 @@ def create_best_scores_table(df):
                         "<b>Best F1</b>",
                         "<b>Accuracy</b>",
                         "<b>Val Loss</b>",
+                        "<b>Iteration</b>",
                         "<b>Setup</b>",
                         "<b>Experiment</b>",
                         "<b>Dataset</b>",
@@ -186,6 +197,7 @@ def create_best_scores_table(df):
                         best_scores["f1"].round(4),
                         best_scores["accuracy"].round(4),
                         best_scores["val_loss"].round(4),
+                        best_scores["iteration"].fillna("N/A").astype(str),
                         best_scores["setup"],
                         best_scores["experiment_group"].str.replace("exp_", ""),
                         best_scores["dataset"],
@@ -299,6 +311,89 @@ def create_experiment_group_comparison(df):
     return fig
 
 
+def create_iteration_progression(df):
+    """
+    Create line charts showing score progression by iteration for each setup
+    """
+    # Filter to only records with iteration info
+    df_iter = df[df["iteration"].notna()].copy()
+
+    if df_iter.empty:
+        return None
+
+    # Get unique organelles
+    organelles = sorted(df_iter["organelle"].unique())
+
+    if len(organelles) == 0:
+        return None
+
+    # Create subplots for each organelle
+    num_organelles = len(organelles)
+    rows = (num_organelles + 1) // 2
+
+    fig = make_subplots(
+        rows=rows,
+        cols=2,
+        subplot_titles=[f"{org.upper()} - F1 Score by Iteration" for org in organelles],
+        vertical_spacing=0.15,
+        horizontal_spacing=0.12,
+    )
+
+    color_map = {
+        "exp_mito": "#FF6B6B",
+        "exp_pancreas": "#4ECDC4",
+        "exp_cell": "#45B7D1",
+        "exp_cerebellum": "#96CEB4",
+        "exp_salivary": "#A78BFA",
+        "exp_c-elegen": "#FECA57",
+        "exp_c-elegen_v2": "#FECA57",
+        "exp_c-elegen_v3": "#FF9FF3",
+        "exp_c-elegen_v4": "#54A0FF",
+    }
+
+    for idx, organelle in enumerate(organelles):
+        row = (idx // 2) + 1
+        col = (idx % 2) + 1
+
+        org_data = df_iter[df_iter["organelle"] == organelle].copy()
+
+        # Group by setup and plot each setup's progression
+        for setup in org_data["setup"].unique():
+            setup_data = org_data[org_data["setup"] == setup].sort_values("iteration")
+            exp_group = setup_data["experiment_group"].iloc[0]
+
+            fig.add_trace(
+                go.Scatter(
+                    x=setup_data["iteration"],
+                    y=setup_data["f1"],
+                    mode="lines+markers",
+                    name=f"{setup} ({exp_group.replace('exp_', '')})",
+                    marker=dict(size=8, color=color_map.get(exp_group, "#95A5A6")),
+                    line=dict(width=2, color=color_map.get(exp_group, "#95A5A6")),
+                    hovertemplate="<b>%{fullData.name}</b><br>"
+                    + "Iteration: %{x}<br>"
+                    + "F1 Score: %{y:.4f}<br>"
+                    + "<extra></extra>",
+                    showlegend=(idx == 0),
+                ),
+                row=row,
+                col=col,
+            )
+
+        fig.update_xaxes(title_text="Iteration", row=row, col=col)
+        fig.update_yaxes(title_text="F1 Score", row=row, col=col)
+
+    fig.update_layout(
+        height=400 * rows,
+        title_text="📈 Model Performance Progression by Training Iteration<br><sub>Track how F1 scores improve with more training</sub>",
+        hovermode="closest",
+        showlegend=True,
+        legend=dict(orientation="v", yanchor="top", y=1, xanchor="left", x=1.02),
+    )
+
+    return fig
+
+
 def create_scores_summary_stats(df):
     """
     Create summary statistics
@@ -357,6 +452,16 @@ def main():
     group_fig = create_experiment_group_comparison(df)
     group_fig.write_html("output/visualizations/group_comparison.html")
     print("✅ Group comparison saved to 'output/visualizations/group_comparison.html'")
+
+    # Create iteration progression chart
+    iteration_fig = create_iteration_progression(df)
+    if iteration_fig:
+        iteration_fig.write_html("output/visualizations/iteration_progression.html")
+        print(
+            "✅ Iteration progression saved to 'output/visualizations/iteration_progression.html'"
+        )
+    else:
+        print("⚠️ No iteration data available for progression chart")
 
     print("\n🎉 All score visualizations generated successfully!")
 
