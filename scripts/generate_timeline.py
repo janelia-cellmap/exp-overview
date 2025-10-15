@@ -837,6 +837,30 @@ def create_main_page():
                 </div>
                 
                 <div class="viz-card">
+                    <h2>🎯 Model Scores by Organelle</h2>
+                    <p>Interactive visualizations of F1 scores, accuracy, and validation loss grouped by organelle type across all experiments.</p>
+                    <a href="scores_by_organelle.html" class="btn">View Scores</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>🏆 Best Performing Models</h2>
+                    <p>Table showing the best F1 scores achieved for each organelle type with detailed metrics and model configurations.</p>
+                    <a href="best_scores.html" class="btn">View Best Scores</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>📊 Metrics Correlation</h2>
+                    <p>Scatter plots analyzing the relationship between F1 score, accuracy, and validation loss across all evaluations.</p>
+                    <a href="metrics_correlation.html" class="btn">View Correlations</a>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>📦 Group Performance Comparison</h2>
+                    <p>Box plots comparing F1 score distributions across different experiment groups to identify trends and outliers.</p>
+                    <a href="group_comparison.html" class="btn">View Comparison</a>
+                </div>
+                
+                <div class="viz-card">
                     <h2>�🗃️ Raw Dataset</h2>
                     <p>Access the complete experiment metadata in CSV format for custom analysis, including training parameters and performance metrics.</p>
                     <a href="https://github.com/janelia-cellmap/exp-overview/blob/main/data/processed/auto_generated_overview.csv" class="btn btn-secondary" target="_blank">Download CSV</a>
