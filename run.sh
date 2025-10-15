@@ -43,6 +43,13 @@ if [ -f "scripts/generate_timeline.py" ]; then
     echo "✅ Timeline generated: output/visualizations/"
 fi
 
+# Generate scores visualization if script exists
+if [ -f "scripts/generate_scores.py" ]; then
+    echo "🎯 Generating scores visualization..."
+    python scripts/generate_scores.py
+    echo "✅ Scores visualizations generated: output/visualizations/"
+fi
+
 # Summary
 echo ""
 echo "🎉 Experiment overview generation complete!"
