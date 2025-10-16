@@ -229,6 +229,441 @@ def create_best_scores_table(df):
     return fig
 
 
+def create_searchable_scores_table(df):
+    """
+    Create an interactive, searchable HTML table with all scores
+    """
+    # Prepare data for the table
+    table_data = df.copy()
+    table_data = table_data.sort_values(
+        ["organelle", "dataset", "f1"], ascending=[True, True, False]
+    )
+
+    # Format numerical columns
+    table_data["f1_formatted"] = table_data["f1"].round(4)
+    table_data["accuracy_formatted"] = table_data["accuracy"].round(4)
+    table_data["val_loss_formatted"] = table_data["val_loss"].round(4)
+    table_data["iteration_formatted"] = (
+        table_data["iteration"].fillna("N/A").astype(str)
+    )
+
+    # Convert to JSON for JavaScript
+    import json
+
+    rows_data = []
+    for _, row in table_data.iterrows():
+        rows_data.append(
+            {
+                "organelle": row["organelle"],
+                "dataset": row["dataset"],
+                "crop": row["crop"],
+                "setup": row["setup"],
+                "experiment": row["experiment_group"].replace("exp_", ""),
+                "checkpoint": row["checkpoint"],
+                "iteration": row["iteration_formatted"],
+                "f1": float(row["f1"]) if pd.notna(row["f1"]) else 0,
+                "accuracy": float(row["accuracy"]) if pd.notna(row["accuracy"]) else 0,
+                "val_loss": float(row["val_loss"]) if pd.notna(row["val_loss"]) else 0,
+            }
+        )
+
+    rows_json = json.dumps(rows_data)
+
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>Searchable Model Scores</title>
+    <meta charset="utf-8">
+    <style>
+        body {{
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }}
+        h1 {{
+            color: #1a365d;
+            border-bottom: 3px solid #2b6cb0;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }}
+        .controls {{
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }}
+        .search-box {{
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #cbd5e0;
+            border-radius: 6px;
+            margin-right: 10px;
+        }}
+        .filter-group {{
+            display: inline-block;
+            margin-right: 20px;
+            margin-top: 10px;
+        }}
+        .filter-group label {{
+            font-weight: 600;
+            margin-right: 8px;
+            color: #2d3748;
+        }}
+        .filter-group select {{
+            padding: 8px 12px;
+            border: 2px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+        }}
+        .stats {{
+            display: inline-block;
+            margin-left: 20px;
+            color: #4a5568;
+            font-weight: 600;
+        }}
+        .table-container {{
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+        }}
+        th {{
+            background: #2b6cb0;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }}
+        th:hover {{
+            background: #2c5282;
+        }}
+        th::after {{
+            content: ' ⇅';
+            opacity: 0.5;
+        }}
+        th.sort-asc::after {{
+            content: ' ↑';
+            opacity: 1;
+        }}
+        th.sort-desc::after {{
+            content: ' ↓';
+            opacity: 1;
+        }}
+        td {{
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }}
+        tr:hover {{
+            background: #f7fafc;
+        }}
+        tr.hidden {{
+            display: none;
+        }}
+        .f1-high {{
+            background: #48bb78;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }}
+        .f1-medium {{
+            background: #ecc94b;
+            color: #1a202c;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }}
+        .f1-low {{
+            background: #fc8181;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }}
+        .export-btn {{
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+        }}
+        .export-btn:hover {{
+            background: #2c5282;
+        }}
+    </style>
+</head>
+<body>
+    <h1>🔍 Searchable Model Scores Table</h1>
+    
+    <div class="controls">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search by any field...">
+        
+        <div class="filter-group">
+            <label>Organelle:</label>
+            <select id="organelleFilter">
+                <option value="">All</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label>Dataset:</label>
+            <select id="datasetFilter">
+                <option value="">All</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label>Experiment:</label>
+            <select id="experimentFilter">
+                <option value="">All</option>
+            </select>
+        </div>
+        
+        <button class="export-btn" onclick="exportToCSV()">📥 Export to CSV</button>
+        
+        <span class="stats" id="statsText">Showing <strong id="visibleCount">0</strong> of <strong id="totalCount">0</strong> rows</span>
+    </div>
+    
+    <div class="table-container">
+        <table id="scoresTable">
+            <thead>
+                <tr>
+                    <th data-column="organelle">Organelle</th>
+                    <th data-column="dataset">Dataset</th>
+                    <th data-column="crop">Crop</th>
+                    <th data-column="setup">Setup</th>
+                    <th data-column="experiment">Experiment</th>
+                    <th data-column="checkpoint">Checkpoint</th>
+                    <th data-column="iteration">Iteration</th>
+                    <th data-column="f1">F1 Score</th>
+                    <th data-column="accuracy">Accuracy</th>
+                    <th data-column="val_loss">Val Loss</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        // Data
+        const allData = {rows_json};
+        let currentSort = {{ column: 'f1', ascending: false }};
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {{
+            populateFilters();
+            renderTable();
+            updateStats();
+            
+            // Event listeners
+            document.getElementById('searchBox').addEventListener('input', filterTable);
+            document.getElementById('organelleFilter').addEventListener('change', filterTable);
+            document.getElementById('datasetFilter').addEventListener('change', filterTable);
+            document.getElementById('experimentFilter').addEventListener('change', filterTable);
+            
+            // Sort headers
+            document.querySelectorAll('th[data-column]').forEach(th => {{
+                th.addEventListener('click', () => sortTable(th.dataset.column));
+            }});
+        }});
+        
+        function populateFilters() {{
+            const organelles = [...new Set(allData.map(r => r.organelle))].sort();
+            const datasets = [...new Set(allData.map(r => r.dataset))].sort();
+            const experiments = [...new Set(allData.map(r => r.experiment))].sort();
+            
+            const organelleSelect = document.getElementById('organelleFilter');
+            organelles.forEach(o => {{
+                const option = document.createElement('option');
+                option.value = o;
+                option.textContent = o;
+                organelleSelect.appendChild(option);
+            }});
+            
+            const datasetSelect = document.getElementById('datasetFilter');
+            datasets.forEach(d => {{
+                const option = document.createElement('option');
+                option.value = d;
+                option.textContent = d;
+                datasetSelect.appendChild(option);
+            }});
+            
+            const experimentSelect = document.getElementById('experimentFilter');
+            experiments.forEach(e => {{
+                const option = document.createElement('option');
+                option.value = e;
+                option.textContent = e;
+                experimentSelect.appendChild(option);
+            }});
+        }}
+        
+        function getF1Class(f1) {{
+            if (f1 >= 0.8) return 'f1-high';
+            if (f1 >= 0.5) return 'f1-medium';
+            return 'f1-low';
+        }}
+        
+        function renderTable() {{
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            allData.forEach((row, index) => {{
+                const tr = document.createElement('tr');
+                tr.dataset.index = index;
+                
+                tr.innerHTML = `
+                    <td>${{row.organelle}}</td>
+                    <td>${{row.dataset}}</td>
+                    <td>${{row.crop}}</td>
+                    <td>${{row.setup}}</td>
+                    <td>${{row.experiment}}</td>
+                    <td>${{row.checkpoint}}</td>
+                    <td>${{row.iteration}}</td>
+                    <td><span class="${{getF1Class(row.f1)}}">${{row.f1.toFixed(4)}}</span></td>
+                    <td>${{row.accuracy.toFixed(4)}}</td>
+                    <td>${{row.val_loss.toFixed(4)}}</td>
+                `;
+                
+                tbody.appendChild(tr);
+            }});
+        }}
+        
+        function filterTable() {{
+            const searchText = document.getElementById('searchBox').value.toLowerCase();
+            const organelleFilter = document.getElementById('organelleFilter').value;
+            const datasetFilter = document.getElementById('datasetFilter').value;
+            const experimentFilter = document.getElementById('experimentFilter').value;
+            
+            const rows = document.querySelectorAll('#tableBody tr');
+            
+            rows.forEach(row => {{
+                const index = parseInt(row.dataset.index);
+                const data = allData[index];
+                
+                // Check search text
+                const matchesSearch = !searchText || 
+                    Object.values(data).some(val => 
+                        String(val).toLowerCase().includes(searchText)
+                    );
+                
+                // Check filters
+                const matchesOrganelle = !organelleFilter || data.organelle === organelleFilter;
+                const matchesDataset = !datasetFilter || data.dataset === datasetFilter;
+                const matchesExperiment = !experimentFilter || data.experiment === experimentFilter;
+                
+                if (matchesSearch && matchesOrganelle && matchesDataset && matchesExperiment) {{
+                    row.classList.remove('hidden');
+                }} else {{
+                    row.classList.add('hidden');
+                }}
+            }});
+            
+            updateStats();
+        }}
+        
+        function sortTable(column) {{
+            const ascending = currentSort.column === column ? !currentSort.ascending : false;
+            currentSort = {{ column, ascending }};
+            
+            // Update header classes
+            document.querySelectorAll('th').forEach(th => {{
+                th.classList.remove('sort-asc', 'sort-desc');
+            }});
+            const header = document.querySelector(`th[data-column="${{column}}"]`);
+            header.classList.add(ascending ? 'sort-asc' : 'sort-desc');
+            
+            // Sort data
+            allData.sort((a, b) => {{
+                let aVal = a[column];
+                let bVal = b[column];
+                
+                // Handle numeric values
+                if (typeof aVal === 'number' && typeof bVal === 'number') {{
+                    return ascending ? aVal - bVal : bVal - aVal;
+                }}
+                
+                // Handle strings
+                aVal = String(aVal).toLowerCase();
+                bVal = String(bVal).toLowerCase();
+                
+                if (aVal < bVal) return ascending ? -1 : 1;
+                if (aVal > bVal) return ascending ? 1 : -1;
+                return 0;
+            }});
+            
+            renderTable();
+            filterTable(); // Reapply filters
+        }}
+        
+        function updateStats() {{
+            const total = allData.length;
+            const visible = document.querySelectorAll('#tableBody tr:not(.hidden)').length;
+            
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('visibleCount').textContent = visible;
+        }}
+        
+        function exportToCSV() {{
+            const rows = document.querySelectorAll('#tableBody tr:not(.hidden)');
+            const headers = Array.from(document.querySelectorAll('th')).map(th => th.textContent.replace(' ⇅', '').replace(' ↑', '').replace(' ↓', ''));
+            
+            let csv = headers.join(',') + '\\n';
+            
+            rows.forEach(row => {{
+                const index = parseInt(row.dataset.index);
+                const data = allData[index];
+                const values = [
+                    data.organelle,
+                    data.dataset,
+                    data.crop,
+                    data.setup,
+                    data.experiment,
+                    data.checkpoint,
+                    data.iteration,
+                    data.f1.toFixed(4),
+                    data.accuracy.toFixed(4),
+                    data.val_loss.toFixed(4)
+                ];
+                csv += values.map(v => `"${{v}}"`).join(',') + '\\n';
+            }});
+            
+            // Download
+            const blob = new Blob([csv], {{ type: 'text/csv' }});
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'model_scores.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }}
+    </script>
+</body>
+</html>
+"""
+
+    return html
+
+
 def create_metrics_scatter(df):
     """
     Create scatter plots comparing different metrics
@@ -555,6 +990,17 @@ def create_scores_summary_page(df):
         <p><strong>Unique Setups:</strong> {df['setup'].nunique()}</p>
         <p><strong>Unique Datasets:</strong> {df['dataset'].nunique()}</p>
         <p><strong>Organelles Tested:</strong> {', '.join(organelles)}</p>
+        <p style="margin-top: 15px;">
+            <a href="searchable_scores.html" style="background: #2b6cb0; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block;">
+                🔍 View Searchable Table
+            </a>
+            <a href="best_scores.html" style="background: #48bb78; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; margin-left: 10px;">
+                🏆 View Best Scores
+            </a>
+            <a href="iteration_progression.html" style="background: #9f7aea; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block; margin-left: 10px;">
+                📈 View Training Progress
+            </a>
+        </p>
     </div>
     
     <div class="organelle-grid">
@@ -757,6 +1203,14 @@ def main():
     best_scores_fig = create_best_scores_table(df)
     best_scores_fig.write_html("output/visualizations/best_scores.html")
     print("✅ Best scores table saved to 'output/visualizations/best_scores.html'")
+
+    # Create searchable scores table
+    searchable_table_html = create_searchable_scores_table(df)
+    with open("output/visualizations/searchable_scores.html", "w") as f:
+        f.write(searchable_table_html)
+    print(
+        "✅ Searchable scores table saved to 'output/visualizations/searchable_scores.html'"
+    )
 
     # Create iteration progression charts (one per organelle, if multiple iterations exist)
     iteration_figs = create_iteration_progression(df)
