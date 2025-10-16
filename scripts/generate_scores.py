@@ -78,8 +78,8 @@ def collect_scores_from_runs():
 
 def create_organelle_comparison_charts(df):
     """
-    Create simple, clear bar charts showing F1 scores for each organelle
-    One chart per organelle, sorted by F1 score
+    Create simple, clear bar charts showing F1 scores for each organelle per dataset
+    One chart per organelle, grouped by dataset
     """
     organelles = sorted(df["organelle"].unique())
 
@@ -89,64 +89,79 @@ def create_organelle_comparison_charts(df):
     for organelle in organelles:
         org_data = df[df["organelle"] == organelle].copy()
 
-        # Get best score per setup (in case multiple iterations exist)
-        best_per_setup = org_data.loc[org_data.groupby("setup")["f1"].idxmax()]
-        best_per_setup = best_per_setup.sort_values(
-            "f1", ascending=True
-        )  # Ascending for horizontal bar
+        # Get best score per setup AND dataset (in case multiple iterations exist)
+        best_per_setup_dataset = org_data.loc[
+            org_data.groupby(["setup", "dataset"])["f1"].idxmax()
+        ]
+        best_per_setup_dataset = best_per_setup_dataset.sort_values(
+            ["dataset", "f1"], ascending=[True, True]
+        )  # Sort by dataset first, then f1
 
-        # Create setup label with iteration
-        best_per_setup["setup_label"] = best_per_setup.apply(
-            lambda x: f"{x['setup']} (iter {int(x['iteration']) if pd.notna(x['iteration']) else 'N/A'})",
+        # Create setup label with iteration and dataset
+        best_per_setup_dataset["setup_label"] = best_per_setup_dataset.apply(
+            lambda x: f"{x['setup']} - {x['dataset']} (iter {int(x['iteration']) if pd.notna(x['iteration']) else 'N/A'})",
             axis=1,
         )
 
-        # Color by experiment group
-        color_map = {
-            "exp_mito": "#FF6B6B",
-            "exp_pancreas": "#4ECDC4",
-            "exp_cell": "#45B7D1",
-            "exp_cerebellum": "#96CEB4",
-            "exp_salivary": "#A78BFA",
-            "exp_c-elegen": "#FECA57",
+        # Color by dataset
+        datasets = best_per_setup_dataset["dataset"].unique()
+        dataset_color_map = {
+            dataset: px.colors.qualitative.Plotly[i % len(px.colors.qualitative.Plotly)]
+            for i, dataset in enumerate(datasets)
         }
 
         colors = [
-            color_map.get(g, "#95A5A6") for g in best_per_setup["experiment_group"]
+            dataset_color_map.get(d, "#95A5A6")
+            for d in best_per_setup_dataset["dataset"]
         ]
 
         fig = go.Figure()
 
         fig.add_trace(
             go.Bar(
-                y=best_per_setup["setup_label"],
-                x=best_per_setup["f1"],
+                y=best_per_setup_dataset["setup_label"],
+                x=best_per_setup_dataset["f1"],
                 orientation="h",
                 marker=dict(color=colors, line=dict(color="white", width=1)),
-                text=best_per_setup["f1"].round(4),
+                text=best_per_setup_dataset["f1"].round(4),
                 textposition="outside",
                 hovertemplate="<b>%{y}</b><br>"
                 + "F1 Score: %{x:.4f}<br>"
                 + "Accuracy: %{customdata[0]:.4f}<br>"
                 + "Val Loss: %{customdata[1]:.4f}<br>"
                 + "Dataset: %{customdata[2]}<br>"
-                + "Group: %{customdata[3]}<br>"
+                + "Crop: %{customdata[3]}<br>"
+                + "Group: %{customdata[4]}<br>"
                 + "<extra></extra>",
-                customdata=best_per_setup[
-                    ["accuracy", "val_loss", "dataset", "experiment_group"]
+                customdata=best_per_setup_dataset[
+                    ["accuracy", "val_loss", "dataset", "crop", "experiment_group"]
                 ].values,
             )
         )
 
+        # Add legend for datasets
+        for dataset, color in dataset_color_map.items():
+            fig.add_trace(
+                go.Scatter(
+                    x=[None],
+                    y=[None],
+                    mode="markers",
+                    marker=dict(size=10, color=color),
+                    legendgroup=dataset,
+                    showlegend=True,
+                    name=dataset,
+                )
+            )
+
         fig.update_layout(
             title=dict(
-                text=f"<b>{organelle.upper()}</b> - F1 Scores by Setup<br><sub>Showing best iteration for each setup</sub>",
+                text=f"<b>{organelle.upper()}</b> - F1 Scores by Setup & Dataset<br><sub>Showing best iteration for each setup-dataset combination</sub>",
                 font=dict(size=20),
             ),
             xaxis_title="F1 Score",
-            yaxis_title="Setup (Iteration)",
-            height=max(400, len(best_per_setup) * 35 + 150),
-            margin=dict(l=200, r=100, t=100, b=80),
+            yaxis_title="Setup - Dataset (Iteration)",
+            height=max(400, len(best_per_setup_dataset) * 35 + 150),
+            margin=dict(l=250, r=100, t=100, b=80),
             template="plotly_white",
             xaxis=dict(range=[0, 1.0]),
             font=dict(size=12),
@@ -159,12 +174,12 @@ def create_organelle_comparison_charts(df):
 
 def create_best_scores_table(df):
     """
-    Create a table showing the best F1 score for each organelle
+    Create a table showing the best F1 score for each organelle per dataset
     """
 
-    # Get best score for each organelle
-    best_scores = df.loc[df.groupby("organelle")["f1"].idxmax()]
-    best_scores = best_scores.sort_values("f1", ascending=False)
+    # Get best score for each organelle-dataset combination
+    best_scores = df.loc[df.groupby(["organelle", "dataset"])["f1"].idxmax()]
+    best_scores = best_scores.sort_values(["organelle", "f1"], ascending=[True, False])
 
     fig = go.Figure(
         data=[
@@ -172,13 +187,14 @@ def create_best_scores_table(df):
                 header=dict(
                     values=[
                         "<b>Organelle</b>",
+                        "<b>Dataset</b>",
                         "<b>Best F1</b>",
                         "<b>Accuracy</b>",
                         "<b>Val Loss</b>",
                         "<b>Iteration</b>",
                         "<b>Setup</b>",
                         "<b>Experiment</b>",
-                        "<b>Dataset</b>",
+                        "<b>Crop</b>",
                     ],
                     fill_color="#2b6cb0",
                     font=dict(color="white", size=12),
@@ -187,13 +203,14 @@ def create_best_scores_table(df):
                 cells=dict(
                     values=[
                         best_scores["organelle"],
+                        best_scores["dataset"],
                         best_scores["f1"].round(4),
                         best_scores["accuracy"].round(4),
                         best_scores["val_loss"].round(4),
                         best_scores["iteration"].fillna("N/A").astype(str),
                         best_scores["setup"],
                         best_scores["experiment_group"].str.replace("exp_", ""),
-                        best_scores["dataset"],
+                        best_scores["crop"],
                     ],
                     fill_color=[["#f7fafc", "white"] * len(best_scores)],
                     align="left",
@@ -205,7 +222,7 @@ def create_best_scores_table(df):
     )
 
     fig.update_layout(
-        title_text="🏆 Best Performing Models per Organelle",
+        title_text="🏆 Best Performing Models per Organelle per Dataset",
         height=max(400, len(best_scores) * 40 + 100),
     )
 
@@ -435,8 +452,8 @@ def create_scores_summary_page(df):
     """
     organelles = sorted(df["organelle"].unique())
 
-    # Get best F1 for each organelle
-    best_scores = df.loc[df.groupby("organelle")["f1"].idxmax()]
+    # Get best F1 for each organelle (overall best)
+    best_scores_overall = df.loc[df.groupby("organelle")["f1"].idxmax()]
 
     html = f"""<!DOCTYPE html>
 <html>
@@ -445,7 +462,7 @@ def create_scores_summary_page(df):
     <style>
         body {{
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
             background: #f8f9fa;
@@ -457,7 +474,7 @@ def create_scores_summary_page(df):
         }}
         .organelle-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }}
@@ -495,6 +512,19 @@ def create_scores_summary_page(df):
             color: #2b6cb0;
             margin: 15px 0;
         }}
+        .dataset-scores {{
+            margin-top: 15px;
+            padding: 10px;
+            background: #f7fafc;
+            border-radius: 4px;
+            font-size: 13px;
+        }}
+        .dataset-item {{
+            margin: 5px 0;
+            padding: 5px;
+            background: white;
+            border-radius: 3px;
+        }}
         .view-btn {{
             display: inline-block;
             background: #2b6cb0;
@@ -518,11 +548,12 @@ def create_scores_summary_page(df):
     </style>
 </head>
 <body>
-    <h1>🎯 Model Performance by Organelle</h1>
+    <h1>🎯 Model Performance by Organelle & Dataset</h1>
     
     <div class="summary">
         <p><strong>Total Evaluations:</strong> {len(df)}</p>
         <p><strong>Unique Setups:</strong> {df['setup'].nunique()}</p>
+        <p><strong>Unique Datasets:</strong> {df['dataset'].nunique()}</p>
         <p><strong>Organelles Tested:</strong> {', '.join(organelles)}</p>
     </div>
     
@@ -531,17 +562,36 @@ def create_scores_summary_page(df):
 
     for organelle in organelles:
         org_data = df[df["organelle"] == organelle]
-        best = best_scores[best_scores["organelle"] == organelle].iloc[0]
+        best_overall = best_scores_overall[
+            best_scores_overall["organelle"] == organelle
+        ].iloc[0]
+
+        # Get best score per dataset for this organelle
+        best_per_dataset = org_data.loc[org_data.groupby("dataset")["f1"].idxmax()]
+        best_per_dataset = best_per_dataset.sort_values("f1", ascending=False)
+
+        dataset_scores_html = ""
+        for _, row in best_per_dataset.iterrows():
+            dataset_scores_html += f"""
+                <div class="dataset-item">
+                    <strong>{row['dataset']}:</strong> F1 = {row['f1']:.4f} ({row['setup']})
+                </div>
+            """
 
         html += f"""
         <div class="organelle-card">
             <div class="organelle-name">{organelle}</div>
-            <div class="best-f1">{best['f1']:.4f}</div>
+            <div class="best-f1">{best_overall['f1']:.4f}</div>
             <div class="stats">
-                <div><span class="stat-label">Best Setup:</span> {best['setup']}</div>
-                <div><span class="stat-label">Iteration:</span> {int(best['iteration']) if pd.notna(best['iteration']) else 'N/A'}</div>
+                <div><span class="stat-label">Best Overall Setup:</span> {best_overall['setup']}</div>
+                <div><span class="stat-label">Best Dataset:</span> {best_overall['dataset']}</div>
+                <div><span class="stat-label">Iteration:</span> {int(best_overall['iteration']) if pd.notna(best_overall['iteration']) else 'N/A'}</div>
+                <div><span class="stat-label">Datasets Tested:</span> {org_data['dataset'].nunique()}</div>
                 <div><span class="stat-label">Total Evaluations:</span> {len(org_data)}</div>
-                <div><span class="stat-label">Setups Tested:</span> {org_data['setup'].nunique()}</div>
+            </div>
+            <div class="dataset-scores">
+                <strong>Best per Dataset:</strong>
+                {dataset_scores_html}
             </div>
             <a href="scores_{organelle}.html" class="view-btn">View Detailed Results →</a>
         </div>
