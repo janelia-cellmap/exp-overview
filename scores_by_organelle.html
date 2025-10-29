@@ -94,10 +94,10 @@
     <h1>🎯 Model Performance by Organelle & Dataset</h1>
     
     <div class="summary">
-        <p><strong>Total Evaluations:</strong> 3704</p>
-        <p><strong>Unique Setups:</strong> 13</p>
+        <p><strong>Total Evaluations:</strong> 4931</p>
+        <p><strong>Unique Setups:</strong> 28</p>
         <p><strong>Unique Datasets:</strong> 16</p>
-        <p><strong>Organelles Tested:</strong> isg, ld, mito, nuc</p>
+        <p><strong>Organelles Tested:</strong> cell, ecs, er, isg, ld, mito, nuc</p>
         <p style="margin-top: 15px;">
             <a href="searchable_scores.html" style="background: #2b6cb0; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; display: inline-block;">
                 🔍 View Searchable Table
@@ -114,20 +114,135 @@
     <div class="organelle-grid">
 
         <div class="organelle-card">
-            <div class="organelle-name">isg</div>
-            <div class="best-f1">0.4778</div>
+            <div class="organelle-name">cell</div>
+            <div class="best-f1">0.9975</div>
             <div class="stats">
-                <div><span class="stat-label">Best Overall Setup:</span> setup_43</div>
-                <div><span class="stat-label">Best Dataset:</span> jrc_mus-pancreas-5</div>
-                <div><span class="stat-label">Iteration:</span> 10000</div>
-                <div><span class="stat-label">Datasets Tested:</span> 1</div>
-                <div><span class="stat-label">Total Evaluations:</span> 1</div>
+                <div><span class="stat-label">Best Overall Setup:</span> setup_20</div>
+                <div><span class="stat-label">Best Dataset:</span> jrc_mus-pancreas-6</div>
+                <div><span class="stat-label">Iteration:</span> 190000</div>
+                <div><span class="stat-label">Datasets Tested:</span> 4</div>
+                <div><span class="stat-label">Total Evaluations:</span> 955</div>
             </div>
             <div class="dataset-scores">
                 <strong>Best per Dataset:</strong>
                 
                 <div class="dataset-item">
-                    <strong>jrc_mus-pancreas-5:</strong> F1 = 0.4778 (setup_43)
+                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.9975 (setup_20)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_c-elegans-op50-1:</strong> F1 = 0.9950 (setup_20)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_mus-cerebellum-1:</strong> F1 = 0.9246 (setup_20)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_mus-salivary-1:</strong> F1 = 0.7757 (setup_20)
+                </div>
+            
+            </div>
+            <a href="scores_cell.html" class="view-btn">View Detailed Results →</a>
+        </div>
+
+        <div class="organelle-card">
+            <div class="organelle-name">ecs</div>
+            <div class="best-f1">0.7397</div>
+            <div class="stats">
+                <div><span class="stat-label">Best Overall Setup:</span> setup_44</div>
+                <div><span class="stat-label">Best Dataset:</span> jrc_mus-salivary-1</div>
+                <div><span class="stat-label">Iteration:</span> 260000</div>
+                <div><span class="stat-label">Datasets Tested:</span> 5</div>
+                <div><span class="stat-label">Total Evaluations:</span> 380</div>
+            </div>
+            <div class="dataset-scores">
+                <strong>Best per Dataset:</strong>
+                
+                <div class="dataset-item">
+                    <strong>jrc_mus-salivary-1:</strong> F1 = 0.7397 (setup_44)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_celegans-20250414:</strong> F1 = 0.6391 (setup_44)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_mus-cerebellum-1:</strong> F1 = 0.6125 (setup_44)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_c-elegans-comma-1:</strong> F1 = 0.4885 (setup_44)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_celegans_bw25113:</strong> F1 = 0.3732 (setup_44)
+                </div>
+            
+            </div>
+            <a href="scores_ecs.html" class="view-btn">View Detailed Results →</a>
+        </div>
+
+        <div class="organelle-card">
+            <div class="organelle-name">er</div>
+            <div class="best-f1">0.7179</div>
+            <div class="stats">
+                <div><span class="stat-label">Best Overall Setup:</span> setup_46</div>
+                <div><span class="stat-label">Best Dataset:</span> jrc_mus-pancreas-6</div>
+                <div><span class="stat-label">Iteration:</span> 130000</div>
+                <div><span class="stat-label">Datasets Tested:</span> 6</div>
+                <div><span class="stat-label">Total Evaluations:</span> 312</div>
+            </div>
+            <div class="dataset-scores">
+                <strong>Best per Dataset:</strong>
+                
+                <div class="dataset-item">
+                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.7179 (setup_46)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_c-elegans-op50-1:</strong> F1 = 0.6923 (setup_46)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_mus-salivary-1:</strong> F1 = 0.5945 (setup_46)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_c-elegans-bw-1:</strong> F1 = 0.5577 (setup_46)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_mus-cerebellum-1:</strong> F1 = 0.4390 (setup_46)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_c-elegans-comma-1:</strong> F1 = 0.4214 (setup_46)
+                </div>
+            
+            </div>
+            <a href="scores_er.html" class="view-btn">View Detailed Results →</a>
+        </div>
+
+        <div class="organelle-card">
+            <div class="organelle-name">isg</div>
+            <div class="best-f1">0.7112</div>
+            <div class="stats">
+                <div><span class="stat-label">Best Overall Setup:</span> setup_13</div>
+                <div><span class="stat-label">Best Dataset:</span> jrc_mus-pancreas-6</div>
+                <div><span class="stat-label">Iteration:</span> 360000</div>
+                <div><span class="stat-label">Datasets Tested:</span> 2</div>
+                <div><span class="stat-label">Total Evaluations:</span> 76</div>
+            </div>
+            <div class="dataset-scores">
+                <strong>Best per Dataset:</strong>
+                
+                <div class="dataset-item">
+                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.7112 (setup_13)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_mus-pancreas-5:</strong> F1 = 0.5388 (setup_13)
                 </div>
             
             </div>
@@ -136,47 +251,47 @@
 
         <div class="organelle-card">
             <div class="organelle-name">ld</div>
-            <div class="best-f1">0.5950</div>
+            <div class="best-f1">0.2160</div>
             <div class="stats">
-                <div><span class="stat-label">Best Overall Setup:</span> setup_49</div>
+                <div><span class="stat-label">Best Overall Setup:</span> setup_48</div>
                 <div><span class="stat-label">Best Dataset:</span> jrc_c-elegans-comma-1</div>
-                <div><span class="stat-label">Iteration:</span> 140000</div>
+                <div><span class="stat-label">Iteration:</span> 30000</div>
                 <div><span class="stat-label">Datasets Tested:</span> 8</div>
-                <div><span class="stat-label">Total Evaluations:</span> 352</div>
+                <div><span class="stat-label">Total Evaluations:</span> 48</div>
             </div>
             <div class="dataset-scores">
                 <strong>Best per Dataset:</strong>
                 
                 <div class="dataset-item">
-                    <strong>jrc_c-elegans-comma-1:</strong> F1 = 0.5950 (setup_49)
+                    <strong>jrc_c-elegans-comma-1:</strong> F1 = 0.2160 (setup_48)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-salivary-2:</strong> F1 = 0.5853 (setup_49)
+                    <strong>jrc_celegans_bw25113:</strong> F1 = 0.1749 (setup_48)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_celegans_bw25113:</strong> F1 = 0.5823 (setup_49)
+                    <strong>jrc_c-elegans-bw-1:</strong> F1 = 0.1525 (setup_48)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_c-elegans-bw-1:</strong> F1 = 0.4304 (setup_49)
+                    <strong>jrc_celegans-20250414:</strong> F1 = 0.1456 (setup_48)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-pancreas-5:</strong> F1 = 0.4036 (setup_49)
+                    <strong>jrc_c-elegans-op50-1:</strong> F1 = 0.0726 (setup_48)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_celegans-20250414:</strong> F1 = 0.2961 (setup_49)
+                    <strong>jrc_mus-pancreas-5:</strong> F1 = 0.0619 (setup_48)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.1811 (setup_49)
+                    <strong>jrc_mus-salivary-2:</strong> F1 = 0.0249 (setup_48)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_c-elegans-op50-1:</strong> F1 = 0.0507 (setup_48)
+                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.0051 (setup_48)
                 </div>
             
             </div>
@@ -190,8 +305,8 @@
                 <div><span class="stat-label">Best Overall Setup:</span> setup_40</div>
                 <div><span class="stat-label">Best Dataset:</span> jrc_c-elegans-op50-1</div>
                 <div><span class="stat-label">Iteration:</span> 20000</div>
-                <div><span class="stat-label">Datasets Tested:</span> 6</div>
-                <div><span class="stat-label">Total Evaluations:</span> 2646</div>
+                <div><span class="stat-label">Datasets Tested:</span> 8</div>
+                <div><span class="stat-label">Total Evaluations:</span> 2728</div>
             </div>
             <div class="dataset-scores">
                 <strong>Best per Dataset:</strong>
@@ -220,81 +335,89 @@
                     <strong>jrc_c-elegans-comma-1:</strong> F1 = 0.9546 (setup_19)
                 </div>
             
+                <div class="dataset-item">
+                    <strong>jrc_mus-pancreas-5:</strong> F1 = 0.1448 (setup_08)
+                </div>
+            
+                <div class="dataset-item">
+                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.0612 (setup_07)
+                </div>
+            
             </div>
             <a href="scores_mito.html" class="view-btn">View Detailed Results →</a>
         </div>
 
         <div class="organelle-card">
             <div class="organelle-name">nuc</div>
-            <div class="best-f1">0.5929</div>
+            <div class="best-f1">0.6150</div>
             <div class="stats">
                 <div><span class="stat-label">Best Overall Setup:</span> setup_50</div>
                 <div><span class="stat-label">Best Dataset:</span> jrc_mus-salivary-2</div>
-                <div><span class="stat-label">Iteration:</span> 10000</div>
+                <div><span class="stat-label">Iteration:</span> 20000</div>
                 <div><span class="stat-label">Datasets Tested:</span> 15</div>
-                <div><span class="stat-label">Total Evaluations:</span> 705</div>
+                <div><span class="stat-label">Total Evaluations:</span> 432</div>
             </div>
             <div class="dataset-scores">
                 <strong>Best per Dataset:</strong>
                 
                 <div class="dataset-item">
-                    <strong>jrc_mus-salivary-2:</strong> F1 = 0.5929 (setup_50)
+                    <strong>jrc_mus-salivary-2:</strong> F1 = 0.6150 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-pancreas-5:</strong> F1 = 0.5583 (setup_50)
+                    <strong>jrc_mus-pancreas-5:</strong> F1 = 0.5936 (setup_51)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-cerebellum-2:</strong> F1 = 0.5164 (setup_50)
+                    <strong>jrc_mus-pancreas-7:</strong> F1 = 0.5918 (setup_10)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_c-elegans-bw-1:</strong> F1 = 0.4680 (setup_50)
+                    <strong>jrc_mus-cerebellum-2:</strong> F1 = 0.5365 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.4546 (setup_50)
+                    <strong>jrc_c-elegans-bw-1:</strong> F1 = 0.4841 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_c-elegans-op50-1:</strong> F1 = 0.4143 (setup_50)
+                    <strong>jrc_mus-pancreas-6:</strong> F1 = 0.4693 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-salivary-1:</strong> F1 = 0.4123 (setup_50)
+                    <strong>jrc_c-elegans-op50-1:</strong> F1 = 0.4290 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_celegans-20250414:</strong> F1 = 0.3927 (setup_50)
+                    <strong>jrc_mus-salivary-1:</strong> F1 = 0.4253 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-pancreas-7:</strong> F1 = 0.2023 (setup_50)
+                    <strong>jrc_celegans-20250414:</strong> F1 = 0.4228 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_c-elegans-comma-1:</strong> F1 = 0.1829 (setup_50)
+                    <strong>jrc_c-elegans-comma-1:</strong> F1 = 0.1966 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-pancreas-4:</strong> F1 = 0.1574 (setup_50)
+                    <strong>jrc_mus-pancreas-4:</strong> F1 = 0.1734 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-cerebellum-1:</strong> F1 = 0.1381 (setup_50)
+                    <strong>jrc_mus-cerebellum-1:</strong> F1 = 0.1557 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-cerebellum-3:</strong> F1 = 0.1137 (setup_50)
+                    <strong>jrc_mus-cerebellum-3:</strong> F1 = 0.1266 (setup_51)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_mus-salivary-3:</strong> F1 = 0.0951 (setup_50)
+                    <strong>jrc_mus-salivary-3:</strong> F1 = 0.1028 (setup_50)
                 </div>
             
                 <div class="dataset-item">
-                    <strong>jrc_celegans_bw25113:</strong> F1 = 0.0269 (setup_50)
+                    <strong>jrc_celegans_bw25113:</strong> F1 = 0.0309 (setup_50)
                 </div>
             
             </div>
