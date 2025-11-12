@@ -615,3 +615,12 @@ To https://github.com/janelia-cellmap/exp-overview.git
 ./run.sh: line 11: conda: command not found
 ./run.sh: line 12: conda: command not found
 [2025-10-03 02:00:02] ERROR: run.sh failed with exit code 1
+[2025-11-08 02:00:01] Starting daily update process...
+[2025-11-08 02:00:01] Activated conda environment: fly
+[2025-11-08 02:00:01] Running run.sh...
+🔬 Experiment Overview Generator
+===============================
+📦 Activating conda environment...
+./run.sh: line 11: conda: command not found
+./run.sh: line 12: conda: command not found
+[2025-11-08 02:00:01] ERROR: run.sh failed with exit code 1

@@ -88,11 +88,25 @@ def create_organelle_comparison_charts(df):
 
     for organelle in organelles:
         org_data = df[df["organelle"] == organelle].copy()
+        
+        # Filter out rows with NaN f1 scores before finding max
+        org_data_valid = org_data.dropna(subset=['f1'])
+        
+        if org_data_valid.empty:
+            print(f"Warning: No valid f1 scores found for organelle '{organelle}', skipping...")
+            continue
 
         # Get best score per setup AND dataset (in case multiple iterations exist)
-        best_per_setup_dataset = org_data.loc[
-            org_data.groupby(["setup", "dataset"])["f1"].idxmax()
-        ]
+        best_indices = org_data_valid.groupby(["setup", "dataset"])["f1"].idxmax()
+        
+        # Filter out any NaN indices that might still occur
+        best_indices = best_indices.dropna()
+        
+        if best_indices.empty:
+            print(f"Warning: No valid best scores found for organelle '{organelle}', skipping...")
+            continue
+            
+        best_per_setup_dataset = org_data_valid.loc[best_indices]
         best_per_setup_dataset = best_per_setup_dataset.sort_values(
             ["dataset", "f1"], ascending=[True, True]
         )  # Sort by dataset first, then f1
@@ -178,7 +192,21 @@ def create_best_scores_table(df):
     """
 
     # Get best score for each organelle-dataset combination
-    best_scores = df.loc[df.groupby(["organelle", "dataset"])["f1"].idxmax()]
+    # Filter out NaN f1 scores before finding max
+    df_valid = df.dropna(subset=['f1'])
+    
+    if df_valid.empty:
+        print("Warning: No valid f1 scores found for best scores table")
+        return go.Figure()
+    
+    best_indices = df_valid.groupby(["organelle", "dataset"])["f1"].idxmax()
+    best_indices = best_indices.dropna()
+    
+    if best_indices.empty:
+        print("Warning: No valid best scores found for best scores table")
+        return go.Figure()
+    
+    best_scores = df_valid.loc[best_indices]
     best_scores = best_scores.sort_values(["organelle", "f1"], ascending=[True, False])
 
     fig = go.Figure(
@@ -888,7 +916,21 @@ def create_scores_summary_page(df):
     organelles = sorted(df["organelle"].unique())
 
     # Get best F1 for each organelle (overall best)
-    best_scores_overall = df.loc[df.groupby("organelle")["f1"].idxmax()]
+    # Filter out NaN f1 scores before finding max
+    df_valid = df.dropna(subset=['f1'])
+    
+    if df_valid.empty:
+        print("Warning: No valid f1 scores found for summary page")
+        return "<html><body><h1>No valid scores found</h1></body></html>"
+    
+    best_indices = df_valid.groupby("organelle")["f1"].idxmax()
+    best_indices = best_indices.dropna()
+    
+    if best_indices.empty:
+        print("Warning: No valid best organelle scores found for summary page")
+        return "<html><body><h1>No valid best scores found</h1></body></html>"
+    
+    best_scores_overall = df_valid.loc[best_indices]
 
     html = f"""<!DOCTYPE html>
 <html>
@@ -1013,7 +1055,21 @@ def create_scores_summary_page(df):
         ].iloc[0]
 
         # Get best score per dataset for this organelle
-        best_per_dataset = org_data.loc[org_data.groupby("dataset")["f1"].idxmax()]
+        # Filter out NaN f1 scores before finding max
+        org_data_valid = org_data.dropna(subset=['f1'])
+        
+        if org_data_valid.empty:
+            print(f"Warning: No valid f1 scores found for organelle '{organelle}' in summary page, skipping...")
+            continue
+            
+        best_indices = org_data_valid.groupby("dataset")["f1"].idxmax()
+        best_indices = best_indices.dropna()
+        
+        if best_indices.empty:
+            print(f"Warning: No valid best dataset scores found for organelle '{organelle}' in summary page, skipping...")
+            continue
+            
+        best_per_dataset = org_data_valid.loc[best_indices]
         best_per_dataset = best_per_dataset.sort_values("f1", ascending=False)
 
         dataset_scores_html = ""
